@@ -1,11 +1,9 @@
 import React from "react";
 import "./home.css";
-import Navbar from "../navbar/navbar";
 
 function Home() {
   return (
     <div className="App">
-      <Navbar />
       <header className="hero-section">
         <h1>TƯ VẤN CHIẾN LƯỢC THƯƠNG HIỆU</h1>
         <p>
