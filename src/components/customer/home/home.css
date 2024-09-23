@@ -1,41 +1,40 @@
 body,
 html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
 }
 .hero-section {
-    background-color: #0000FF; /* Matching blue */
-    color: white;
-    text-align: center;
-    padding-top: 150px; /* More padding for better visual hierarchy */
-    padding-bottom: 50px;
-    height: 100vh;
-  }
-  
-  .hero-section h1 {
-    font-size: 60px; /* Increased font size for the title */
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .hero-section p {
-    font-size: 22px; /* Larger text for the description */
-    margin: 20px 0;
-  }
-  
-  .consult-button {
-    background-color: #0000FF;
-    color: white;
-    padding: 10px 30px;
-    border: 2px solid #FFFFFF;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 18px;
-  }
-  
-  .consult-button:hover {
-    background-color: #0056b3;
-  }
-  
+  background-color: #0000ff; /* Matching blue */
+  color: white;
+  text-align: center;
+  padding-top: 150px; /* More padding for better visual hierarchy */
+  padding-bottom: 50px;
+  height: 100vh;
+}
+
+.hero-section h1 {
+  font-size: 60px; /* Increased font size for the title */
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.hero-section p {
+  font-size: 22px; /* Larger text for the description */
+  margin: 20px 0;
+}
+
+.consult-button {
+  background-color: #0000ff;
+  color: white;
+  padding: 10px 30px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.consult-button:hover {
+  background-color: #0056b3;
+}

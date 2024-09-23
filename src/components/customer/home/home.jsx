@@ -3,7 +3,7 @@ import "./home.css";
 
 function Home() {
   return (
-    <div className="App">
+    <div className="app">
       <header className="hero-section">
         <h1>TƯ VẤN CHIẾN LƯỢC THƯƠNG HIỆU</h1>
         <p>
