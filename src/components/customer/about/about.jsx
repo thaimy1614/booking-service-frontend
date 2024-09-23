@@ -12,11 +12,29 @@ const ImageWithText = ({ imageUrl, hoverText, className }) => {
   );
 };
 
+const Project = () => {
+    return (
+      <section className="project">
+        <h2>OUR PROJECT</h2>
+        <div>
+        <img
+          className="about-img-1"
+          src="/assets/img/about1.png"
+          alt="IMG"
+        ></img>
+        </div>
+      </section>
+    );
+  };
+
+
 const About = () => {
   return (
     <div className="app">
       <Header />
+      <Project />
       <div className="about">
+        <h2>OUR SERVICE</h2>
         <div className="image-grid">
           <ImageWithText
             imageUrl="/assets/img/about2.png"

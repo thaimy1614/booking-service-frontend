@@ -4,6 +4,8 @@
     align-items: center;
     min-height: 100vh;
     background-color: #2d02db;
+    text-align: center;
+    margin: 100px 0;
 }
 
 .image-grid {
@@ -62,4 +64,28 @@
 
 .image-container:hover .hover-text {
     display: flex;
+}
+.about-img-1 {
+    width: 100vw;
+}
+
+.project {
+    text-align: center;
+    margin: 100px 0;
+}
+
+.project h2 {
+    font-size: 96px;
+    font-weight: 600;
+    color: #cfff45;
+}
+
+.project img {
+    width: 100%;
+}
+
+.about h2 {
+    font-size: 96px;
+    font-weight: 600;
+    color: #cfff45;
 }
