@@ -1,0 +1,53 @@
+.navbar {
+  position: fixed;
+  top: 20px; /* Moves the navbar slightly down from the top */
+  width: calc(100% - 100px); /* Set a width with padding on both sides */
+  background-color: #191970; /* Darker blue for the background */
+  padding: 15px 50px;
+  border-radius: 30px; /* Rounded corners for the navbar */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+}
+
+.logo .brand-name {
+  color: #c7ff00; /* Bright neon yellow for the logo */
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.navbar-center {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 20px; /* Space between the nav links */
+}
+
+.nav-links li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+.login-button {
+  background-color: #c7ff00; /* Bright neon yellow */
+  border: none;
+  padding: 10px 30px;
+  border-radius: 20px; /* Rounded corners for the button */
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.login-button:hover {
+  background-color: #afff33; /* Slight hover effect for the button */
+}
