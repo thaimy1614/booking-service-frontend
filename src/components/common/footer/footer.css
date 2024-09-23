@@ -1,0 +1,83 @@
+.footer {
+    background-color: #061128;
+    color: white;
+    padding: 48px 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+  }
+  
+  .footer-subscribe {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1200px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid #fff;
+    margin-bottom: 32px;
+    font-size: 16px;
+  }
+  
+  .footer-subscribe h3 {
+    flex: 1;
+    gap: 10px;
+  }
+  
+  .footer-subscribe input {
+    background-color: #d9d9d9;
+    border: none;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 16px;
+    margin-right: 16px;
+    flex: 1;
+  }
+  
+  .footer-subscribe button {
+    background-color: #005aec;
+    border: none;
+    border-radius: 16px;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+  }
+  
+  .footer-columns {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1040px;
+  }
+  
+  .footer-column {
+    width: 20%;
+  }
+  
+  .footer-column h3 {
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 0;
+  }
+  
+  .footer-column p,
+  .footer-column a {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 8px 0;
+    color: white;
+    text-decoration: none;
+  }
+  
+  .footer-column .social-icons {
+    display: flex;
+    gap: 16px;
+  }
+  
+  .footer-column .social-icons img {
+    width: 32px;
+    height: 32px;
+  }

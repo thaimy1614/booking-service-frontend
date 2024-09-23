@@ -1,21 +1,22 @@
 import React from "react";
 import "./header.css";
+import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
     <header className="header">
-      <a href="/home">
+      <NavLink to="/home">
         <img src="/assets/img/logo.png" alt="Logo" />
-      </a>
+      </NavLink>
       <nav className="nav-menu">
-        <a href="/service">Service</a>
-        <a href="/news">News</a>
-        <a href="/about">About us</a>
-        <a href="/contact">Contact</a>
+        <NavLink to="/service">Service</NavLink>
+        <NavLink to="/news">News</NavLink>
+        <NavLink to="/about">About us</NavLink>
+        <NavLink to="/contact">Contact</NavLink>
       </nav>
-      <a href="/login" className="login-btn">
+      <NavLink to="/login" className="login-btn">
         Login
-      </a>
+      </NavLink>
     </header>
   );
 };

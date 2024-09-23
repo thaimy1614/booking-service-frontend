@@ -1,53 +1,45 @@
-.navbar {
+.header {
   position: fixed;
-  top: 20px; /* Moves the navbar slightly down from the top */
-  width: calc(100% - 100px); /* Set a width with padding on both sides */
-  background-color: #191970; /* Darker blue for the background */
-  padding: 15px 50px;
-  border-radius: 30px; /* Rounded corners for the navbar */
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #0b005280;
+  border-radius: 32px;
+  padding: 24px 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 999;
+  margin: 24px auto;
+  max-width: 900px;
+  width: calc(100% - 96px);
+  z-index: 1000;
 }
 
-.logo .brand-name {
-  color: #c7ff00; /* Bright neon yellow for the logo */
-  font-weight: bold;
-  font-size: 28px;
+.header img {
+  width: 150px;
 }
 
-.navbar-center {
+nav {
   display: flex;
-  flex-grow: 1;
-  justify-content: center;
-  align-items: center;
+  gap: 40px;
+  margin-left: 16px;
 }
 
-.nav-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  gap: 20px; /* Space between the nav links */
-}
-
-.nav-links li a {
+.nav-menu a {
+  font-size: 24px;
+  font-weight: 700;
   color: white;
   text-decoration: none;
-  font-size: 18px;
 }
 
-.login-button {
-  background-color: #c7ff00; /* Bright neon yellow */
+.login-btn {
+  background-color: #c9ff67;
   border: none;
-  padding: 10px 30px;
-  border-radius: 20px; /* Rounded corners for the button */
+  border-radius: 16px;
+  padding: 16px 32px;
+  font-size: 24px;
+  font-weight: 700;
+  color: black;
   cursor: pointer;
-  font-weight: bold;
-  font-size: 16px;
-}
-
-.login-button:hover {
-  background-color: #afff33; /* Slight hover effect for the button */
+  text-decoration: none;
 }
