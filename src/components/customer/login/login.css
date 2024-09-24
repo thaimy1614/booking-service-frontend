@@ -1,0 +1,123 @@
+.container {
+    width: 512px;
+    height: 575px;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    padding: 16px;
+    border-radius: 16px 0px 0px 0px;
+    border-top: 4px solid #282c34;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 100px;
+}
+
+.app {
+    background-image: url("../../../../public/assets/img/login-background.png");
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 16px;
+}
+
+.user-type {
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+    padding-bottom: 4px;
+    position: relative;
+}
+
+.user-type.active {
+    color: limegreen;
+}
+
+.user-type.active::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -4px;
+    width: 100%;
+    height: 3px;
+    background-color: limegreen;
+}
+.input-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 16px;
+    padding: 8px 0;
+}
+
+.input-container label {
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.input-container input {
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-size: 16px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 16px;
+    padding: 8px 0;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input {
+    margin-right: 8px;
+}
+
+.forgot-password {
+    font-size: 14px;
+    color: lightgray;
+    cursor: pointer;
+}
+
+.google-signin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 0 16px;
+    padding: 12px;
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.google-signin img {
+    width: 20px;
+    height: 20px;
+}
+
+.login-btn {
+    margin: 0 16px;
+    padding: 12px;
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+}
