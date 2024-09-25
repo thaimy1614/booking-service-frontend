@@ -1,4 +1,4 @@
-.header {
+.header-bar {
   position: fixed;
   top: 0;
   left: 0;
@@ -13,9 +13,11 @@
   max-width: 900px;
   width: calc(100% - 96px);
   z-index: 1000;
+  justify-content: space-between;
+  padding: 0 16px;
 }
 
-.header img {
+.header-bar img {
   width: 150px;
 }
 

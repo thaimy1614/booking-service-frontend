@@ -3,7 +3,7 @@ import "./login.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 
-function App() {
+function Logout() {
   const [selectedUser, setSelectedUser] = useState("Customer");
 
   const handleUserTypeClick = (userType) => {
@@ -61,4 +61,4 @@ function App() {
   );
 }
 
-export default App;
+export default Logout;

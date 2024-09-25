@@ -88,7 +88,7 @@ const PricingCard = ({ title, description, items }) => {
   );
 };
 
-const Certificates = () => {
+export const Certificates = () => {
   return (
     <section className="certificates">
       <h2>Certificate</h2>

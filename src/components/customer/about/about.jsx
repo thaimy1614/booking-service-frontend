@@ -13,19 +13,51 @@ const ImageWithText = ({ imageUrl, hoverText, className }) => {
 };
 
 const Project = () => {
-    return (
-      <section className="project">
-        <h2>OUR PROJECT</h2>
-        <div>
+  return (
+    <section className="project">
+      <h2>OUR PROJECT</h2>
+      <div>
         <img
           className="about-img-1"
           src="/assets/img/about1.png"
           alt="IMG"
         ></img>
+      </div>
+    </section>
+  );
+};
+
+export const OurService = () => {
+  return (
+    <section>
+      <h2 className="service-title">OUR SERVICE</h2>
+      <div className="about">
+        <div className="image-grid">
+          <ImageWithText
+            imageUrl="/assets/img/about2.png"
+            hoverText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            className="about-img-2"
+          />
+          <ImageWithText
+            imageUrl="/assets/img/about3.png"
+            hoverText="Vivamus lacinia odio vitae vestibulum vestibulum."
+            className="about-img-3"
+          />
+          <ImageWithText
+            imageUrl="/assets/img/about4.png"
+            hoverText="Cras vehicula, mi quis vehicula ornare, eros dolor interdum nulla."
+            className="about-img-4"
+          />
+          <ImageWithText
+            imageUrl="/assets/img/about5.png"
+            hoverText="Donec bibendum lorem sed consequat auctor."
+            className="about-img-5"
+          />
         </div>
-      </section>
-    );
-  };
+      </div>
+    </section>
+  );
+};
 
 const About = () => {
   return (

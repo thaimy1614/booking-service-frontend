@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 export const Header = () => {
   return (
-    <header className="header">
+    <header className="header-bar">
       <NavLink to="/home">
         <img src="/assets/img/logo.png" alt="Logo" />
       </NavLink>
