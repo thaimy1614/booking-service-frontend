@@ -1,9 +1,47 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./login.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
+import { getToken } from "../../../services/localStorageService";
+import { useNavigate } from "react-router-dom";
+import { OAuthConfig } from "../configurations/configuration";
+
 
 function App() {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    const callbackUrl = OAuthConfig.redirectUri;
+    const authUrl = OAuthConfig.authUri;
+    const googleClientId = OAuthConfig.clientId;
+
+    const targetUrl = `${authUrl}?redirect_uri=${encodeURIComponent(
+      callbackUrl
+    )}&response_type=code&client_id=${googleClientId}&scope=openid%20email%20profile`;
+
+    console.log(targetUrl);
+
+    window.location.href = targetUrl;
+  };
+
+  useEffect(() => {
+    const accessToken = getToken();
+
+    if (accessToken) {
+      navigate("/");
+    }
+  }, [navigate]);
+
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    // Handle form submission
+    console.log("Username:", username);
+    console.log("Password:", password);
+  };
+
   const [selectedUser, setSelectedUser] = useState("Customer");
 
   const handleUserTypeClick = (userType) => {
@@ -48,7 +86,7 @@ function App() {
             </div>
             <div className="forgot-password">Forgot password</div>
           </div>
-          <button className="google-signin">
+          <button className="google-signin" onClick={handleClick}>
             <img src="/assets/img/google.png" alt="Google" />
             Sign in with Google
           </button>
