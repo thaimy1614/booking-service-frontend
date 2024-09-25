@@ -24,7 +24,14 @@ function Signup() {
               Sign Up
             </div>
           </div>
-          
+
+          <p id="success" className="message" style={{ color: "greenyellow" }} hidden>
+            Please check your email to verify account!
+          </p>
+          <p id="fail" className="message" style={{ color: "red" }} hidden>
+            Account already exists!
+          </p>
+
           <div className="input-container">
             <label>Username</label>
             <input type="text" placeholder="Username" required />
@@ -49,14 +56,8 @@ function Signup() {
             <label>Phone Number</label>
             <input type="text" placeholder="Phone Number" />
           </div>
-          <div className="options">
-            <div className="remember-me">
-              <input type="checkbox" id="remember-me" />
-              <label htmlFor="remember-me">Save password</label>
-            </div>
-            <div className="forgot-password">Forgot password</div>
-          </div>
-          <button className="login-btn-2">SIGN UP</button>
+          
+          <button type="submit" className="login-btn-2">SIGN UP</button>
         </div>
       </div>
       <Footer />

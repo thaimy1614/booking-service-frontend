@@ -63,6 +63,10 @@
     height: 3px;
     background-color: limegreen;
 }
+.message{
+    margin: 0 16px;
+    padding: 8px 0;
+}
 .input-container {
     display: flex;
     flex-direction: column;

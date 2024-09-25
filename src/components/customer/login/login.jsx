@@ -53,7 +53,7 @@ function App() {
             Sign in with Google
           </button>
           <button className="login-btn-2">LOG IN</button>
-          <button className="login-btn-2">SIGN UP</button>
+          <button onClick={()=>{window.location.href="/signup"}} className="login-btn-2">SIGN UP</button>
         </div>
       </div>
       <Footer />
