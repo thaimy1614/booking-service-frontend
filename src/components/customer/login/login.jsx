@@ -4,7 +4,7 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import { getToken } from "../../../services/localStorageService";
 import { useNavigate } from "react-router-dom";
-import { OAuthConfig } from "../configurations/configuration";
+import { OAuthConfig } from "../../../configurations/configuration";
 
 
 function App() {

@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { setToken } from "../services/localStorageService";
+import { setToken } from "../../services/localStorageService";
 import { Box, CircularProgress, Typography } from "@mui/material";
 
 export default function Authenticate() {
@@ -17,7 +17,7 @@ export default function Authenticate() {
       const authCode = isMatch[1];
 
       fetch(
-        `http://localhost:8080/identity/auth/outbound/authentication?code=${authCode}`,
+        `http://localhost:8080/identity/outbound/authentication?code=${authCode}`,
         {
           method: "POST",
         }
@@ -28,7 +28,7 @@ export default function Authenticate() {
         .then((data) => {
           console.log(data);
 
-          setToken(data.result?.token);
+          setToken(data.data.token);
           setIsLoggedin(true);
         });
     }

@@ -6,6 +6,7 @@ import Home from "./components/customer/home/home";
 import About from "./components/customer/about/about";
 import News from "./components/customer/news/news";
 import Signup from "./components/customer/signup/signup";
+import Authenticate from "./components/common/Authenticate";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/contact" element={<Service />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/authenticate" element={<Authenticate />} />
       </Routes>
     </div>
   );
