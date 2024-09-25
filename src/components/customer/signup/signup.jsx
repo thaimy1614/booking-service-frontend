@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import "./login.css";
+import "./signup.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 
-function Logout() {
+function Signup() {
   const [selectedUser, setSelectedUser] = useState("Customer");
 
   const handleUserTypeClick = (userType) => {
@@ -21,25 +21,33 @@ function Logout() {
               }`}
               onClick={() => handleUserTypeClick("Customer")}
             >
-              Customer
-            </div>
-            <div
-              className={`user-type ${
-                selectedUser === "Admin" ? "active" : ""
-              }`}
-              onClick={() => handleUserTypeClick("Admin")}
-            >
-              Admin
+              Sign Up
             </div>
           </div>
           
           <div className="input-container">
-            <label>Email or Username</label>
-            <input type="text" placeholder="Email or Username" />
+            <label>Username</label>
+            <input type="text" placeholder="Username" required />
           </div>
           <div className="input-container">
             <label>Password</label>
-            <input type="password" placeholder="Password" />
+            <input type="password" placeholder="Password" required />
+          </div>
+          <div className="input-container">
+            <label>Confirm Password</label>
+            <input type="password" placeholder="Confirm Password" required />
+          </div>
+          <div className="input-container">
+            <label>Email</label>
+            <input type="text" placeholder="Email" required />
+          </div>
+          <div className="input-container">
+            <label>Address</label>
+            <input type="text" placeholder="Address" />
+          </div>
+          <div className="input-container">
+            <label>Phone Number</label>
+            <input type="text" placeholder="Phone Number" />
           </div>
           <div className="options">
             <div className="remember-me">
@@ -48,11 +56,6 @@ function Logout() {
             </div>
             <div className="forgot-password">Forgot password</div>
           </div>
-          <button className="google-signin">
-            <img src="/assets/img/google.png" alt="Google" />
-            Sign in with Google
-          </button>
-          <button className="login-btn-2">LOG IN</button>
           <button className="login-btn-2">SIGN UP</button>
         </div>
       </div>
@@ -61,4 +64,4 @@ function Logout() {
   );
 }
 
-export default Logout;
+export default Signup;
