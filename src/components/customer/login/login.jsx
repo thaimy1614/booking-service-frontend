@@ -6,7 +6,6 @@ import { getToken } from "../../../services/localStorageService";
 import { useNavigate } from "react-router-dom";
 import { OAuthConfig } from "../../../configurations/configuration";
 
-
 function App() {
   const navigate = useNavigate();
 
@@ -51,48 +50,67 @@ function App() {
     <div className="app">
       <div className="login-page">
         <Header />
-        <div className="container">
-          <div className="header-login">
-            <div
-              className={`user-type ${
-                selectedUser === "Customer" ? "active" : ""
-              }`}
-              onClick={() => handleUserTypeClick("Customer")}
+          <form className="container" component="form" onSubmit={handleSubmit}>
+            <div className="header-login">
+              <div
+                className={`user-type ${
+                  selectedUser === "Customer" ? "active" : ""
+                }`}
+                onClick={() => handleUserTypeClick("Customer")}
+              >
+                Customer
+              </div>
+              <div
+                className={`user-type ${
+                  selectedUser === "Admin" ? "active" : ""
+                }`}
+                onClick={() => handleUserTypeClick("Admin")}
+              >
+                Admin
+              </div>
+            </div>
+
+            <div className="input-container">
+              <label>Email or Username</label>
+              <input
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                type="text"
+                placeholder="Email or Username"
+              />
+            </div>
+            <div className="input-container">
+              <label>Password</label>
+              <input
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Password"
+              />
+            </div>
+            <div className="options">
+              <div className="remember-me">
+                <input type="checkbox" id="remember-me" />
+                <label htmlFor="remember-me">Save password</label>
+              </div>
+              <div className="forgot-password">Forgot password</div>
+            </div>
+            <button className="google-signin" onClick={handleClick}>
+              <img src="/assets/img/google.png" alt="Google" />
+              Sign in with Google
+            </button>
+            <button type="submit" className="login-btn-2">
+              LOG IN
+            </button>
+            <button
+              onClick={() => {
+                window.location.href = "/signup";
+              }}
+              className="login-btn-2"
             >
-              Customer
-            </div>
-            <div
-              className={`user-type ${
-                selectedUser === "Admin" ? "active" : ""
-              }`}
-              onClick={() => handleUserTypeClick("Admin")}
-            >
-              Admin
-            </div>
-          </div>
-          
-          <div className="input-container">
-            <label>Email or Username</label>
-            <input type="text" placeholder="Email or Username" />
-          </div>
-          <div className="input-container">
-            <label>Password</label>
-            <input type="password" placeholder="Password" />
-          </div>
-          <div className="options">
-            <div className="remember-me">
-              <input type="checkbox" id="remember-me" />
-              <label htmlFor="remember-me">Save password</label>
-            </div>
-            <div className="forgot-password">Forgot password</div>
-          </div>
-          <button className="google-signin" onClick={handleClick}>
-            <img src="/assets/img/google.png" alt="Google" />
-            Sign in with Google
-          </button>
-          <button className="login-btn-2">LOG IN</button>
-          <button onClick={()=>{window.location.href="/signup"}} className="login-btn-2">SIGN UP</button>
-        </div>
+              SIGN UP
+            </button>
+          </form>
       </div>
       <Footer />
     </div>
