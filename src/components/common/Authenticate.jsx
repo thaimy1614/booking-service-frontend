@@ -17,7 +17,7 @@ export default function Authenticate() {
       const authCode = isMatch[1];
 
       fetch(
-        `http://localhost:8080/identity/outbound/authentication?code=${authCode}`,
+        `http://localhost:8080/api/identity/outbound/authentication?code=${authCode}`,
         {
           method: "POST",
         }
@@ -28,7 +28,7 @@ export default function Authenticate() {
         .then((data) => {
           console.log(data);
 
-          setToken(data.data.token);
+          setToken(data.result.token);
           setIsLoggedin(true);
         });
     }
