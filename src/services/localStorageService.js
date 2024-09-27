@@ -19,3 +19,6 @@ export const getUserInfo = () => {
 export const removeToken = () => {
   return localStorage.removeItem(KEY_TOKEN);
 };
+export const removeUserInfo = () => {
+  return localStorage.removeItem(KEY_USER_INFO);
+};
