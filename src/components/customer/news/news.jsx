@@ -36,7 +36,8 @@ export const NewCards = () => {
     },
     {
       img: "new-2.png",
-      title: "US government removes unnecessary degree requirements for cybersecurity workers",
+      title:
+        "US government removes unnecessary degree requirements for cybersecurity workers",
       description:
         "The US government will eliminate unnecessary degree requirements to prioritize skills-based hiring to meet the demand for 500,000 jobs in the cybersecurity field.",
     },

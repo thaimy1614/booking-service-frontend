@@ -2,7 +2,11 @@ import React, { useEffect, useState } from "react";
 import "./login.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
-import { getToken, setToken, setUserInfo } from "../../../services/localStorageService";
+import {
+  getToken,
+  setToken,
+  setUserInfo,
+} from "../../../services/localStorageService";
 import { useNavigate } from "react-router-dom";
 import { OAuthConfig } from "../../../configurations/configuration";
 
@@ -19,7 +23,7 @@ function App() {
       });
       const data = await response.json();
       if (response.ok) {
-        setUserInfo(data.result)
+        setUserInfo(data.result);
       } else {
         console.error("Failed to fetch user info");
       }

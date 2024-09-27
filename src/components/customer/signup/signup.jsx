@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./signup.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
-import { getToken, setToken } from "../../../services/localStorageService";
+import { getToken } from "../../../services/localStorageService";
 import { useNavigate } from "react-router-dom";
 
 function Signup() {

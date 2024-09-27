@@ -12,7 +12,7 @@ html {
   border-radius: 8px;
 }
 
-.main-section h1{
+.main-section h1 {
   margin-top: 10px;
 }
 
@@ -43,10 +43,10 @@ html {
 
 @keyframes scroll {
   0% {
-      transform: translateX(0);
+    transform: translateX(0);
   }
   100% {
-      transform: translateX(-50%);
+    transform: translateX(-50%);
   }
 }
 

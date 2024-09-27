@@ -52,8 +52,10 @@ function ChangePassword() {
         console.log("Response body:", data);
         if (data.result === true) {
           setErrorMessage("Change password successfully!");
-        }else{
-          setErrorMessage("Something went wrong, please try again with correct password");
+        } else {
+          setErrorMessage(
+            "Something went wrong, please try again with correct password"
+          );
         }
       })
       .catch((error) => {

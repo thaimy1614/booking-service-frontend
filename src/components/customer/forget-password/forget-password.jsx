@@ -4,7 +4,6 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 
 function ForgetPassword() {
-
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isModalOTPOpen, setIsModalOTPOpen] = useState(false);

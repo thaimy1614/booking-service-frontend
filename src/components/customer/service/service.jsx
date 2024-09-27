@@ -1,7 +1,7 @@
 import React from "react";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
-import "./service.css"
+import "./service.css";
 
 const MainContent = () => {
   return (
@@ -81,9 +81,7 @@ const PricingCard = ({ title, description, items }) => {
           <li key={index}>{item}</li>
         ))}
       </ul>
-      <button className="pricing-btn">
-        Consult now
-      </button>
+      <button className="pricing-btn">Consult now</button>
     </div>
   );
 };

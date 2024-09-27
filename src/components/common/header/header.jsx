@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./header.css";
 import { NavLink } from "react-router-dom";
 import { getToken } from "../../../services/localStorageService";
-import LogoutIcon from '@mui/icons-material/Logout';
+import LogoutIcon from "@mui/icons-material/Logout";
 import { logOut } from "../../../services/authenticationService";
 
 export const Header = () => {
@@ -32,7 +32,6 @@ export const Header = () => {
     window.location.href = "/login";
   };
 
-
   return (
     <header className="header-bar">
       <NavLink to="/home">
@@ -44,7 +43,7 @@ export const Header = () => {
         <NavLink to="/about">About us</NavLink>
         <NavLink to="/contact">Contact</NavLink>
       </nav>
-      <div 
+      <div
         className="user-menu"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
@@ -58,7 +57,9 @@ export const Header = () => {
           <div className="dropdown">
             <NavLink to="/user/user-info">User Info</NavLink>
             <NavLink to="/history">History</NavLink>
-            <NavLink onClick={handleLogout}>Logout <LogoutIcon /></NavLink>
+            <NavLink onClick={handleLogout}>
+              Logout <LogoutIcon />
+            </NavLink>
           </div>
         )}
       </div>

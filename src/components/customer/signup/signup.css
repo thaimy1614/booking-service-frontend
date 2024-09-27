@@ -1,11 +1,10 @@
-
 .app {
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 0;
-  }
+}
 .container {
     width: 512px;
     height: auto;
@@ -20,7 +19,6 @@
     gap: 16px;
     margin-bottom: 100px;
 }
-
 
 .login-page {
     background-image: url("../../../../public/assets/img/login-background.png");
@@ -63,7 +61,7 @@
     height: 3px;
     background-color: limegreen;
 }
-.message{
+.message {
     margin: 0 16px;
     padding: 8px 0;
 }
