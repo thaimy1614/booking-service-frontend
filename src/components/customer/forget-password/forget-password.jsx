@@ -3,7 +3,7 @@ import "./forget-password.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 
-function ChangePassword() {
+function ForgetPassword() {
 
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -140,4 +140,4 @@ function ChangePassword() {
   );
 }
 
-export default ChangePassword;
+export default ForgetPassword;

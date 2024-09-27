@@ -3,13 +3,26 @@ import "./change-password.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import { useNavigate } from "react-router-dom";
+import { getToken } from "../../../services/localStorageService";
+import { useEffect } from "react";
 
 function ChangePassword() {
+  const navigate = useNavigate();
 
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [reEnter, setReEnter] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+
+  const accessToken = getToken();
+
+  useEffect(() => {
+    const accessToken = getToken();
+
+    if (!accessToken) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -24,10 +37,11 @@ function ChangePassword() {
     fetch("http://localhost:8080/api/identity/change-password", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json", // Set the content type to JSON
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
       },
       body: JSON.stringify({
-        password: password,
+        oldPassword: password,
         newPassword: newPassword,
       }),
     })
@@ -36,12 +50,14 @@ function ChangePassword() {
       })
       .then((data) => {
         console.log("Response body:", data);
-        if(data.result.success===true){
+        if (data.result === true) {
           setErrorMessage("Change password successfully!");
+        }else{
+          setErrorMessage("Something went wrong, please try again with correct password");
         }
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
       });
   };
 
@@ -50,7 +66,9 @@ function ChangePassword() {
       <div className="login-page">
         <Header />
         <form className="container" component="form" onSubmit={handleSubmit}>
-        {errorMessage && <p className="error-message input-container">{errorMessage}</p>}
+          {errorMessage && (
+            <p className="error-message input-container">{errorMessage}</p>
+          )}
           <div className="input-container">
             <label>Old Password</label>
             <input

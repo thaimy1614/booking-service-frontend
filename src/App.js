@@ -8,6 +8,7 @@ import News from "./components/customer/news/news";
 import Signup from "./components/customer/signup/signup";
 import Authenticate from "./components/common/Authenticate";
 import ChangePassword from "./components/customer/change-password/change-password";
+import ForgetPassword from "./components/customer/forget-password/forget-password";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/authenticate" element={<Authenticate />} />
         <Route path="/user/change-password" element={<ChangePassword />} />
+        <Route path="/user/forget-password" element={<ForgetPassword />} />
       </Routes>
     </div>
   );
