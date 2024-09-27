@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "./header.css";
 import { NavLink } from "react-router-dom";
-import { getToken } from "../../../services/localStorageService";
+import { getToken, getUserInfo } from "../../../services/localStorageService";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { logOut } from "../../../services/authenticationService";
 
@@ -11,9 +11,14 @@ export const Header = () => {
 
   useEffect(() => {
     const token = getToken();
-    const userInfo = "ABC";
+
     if (token) {
-      setNavLink(userInfo);
+      const userInfo = getUserInfo();
+      if (userInfo) {
+        var name = JSON.parse(getUserInfo()).name;
+        name = name.split(" ").pop();
+      }
+      setNavLink(name);
     } else {
       setNavLink("Login");
     }
@@ -48,12 +53,12 @@ export const Header = () => {
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <NavLink to={navLink === "ABC" ? "#" : "/login"} className="login-btn">
+        <NavLink to={navLink !== "Login" ? "#" : "/login"} className="login-btn">
           {navLink}
         </NavLink>
 
         {/* Dropdown menu */}
-        {navLink === "ABC" && dropdownVisible && (
+        {navLink !== "Login" && dropdownVisible && (
           <div className="dropdown">
             <NavLink to="/user/user-info">User Info</NavLink>
             <NavLink to="/history">History</NavLink>

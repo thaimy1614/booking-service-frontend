@@ -23,7 +23,8 @@ function App() {
       });
       const data = await response.json();
       if (response.ok) {
-        setUserInfo(data.result);
+        setUserInfo(JSON.stringify(data.result));
+        return data.result;
       } else {
         console.error("Failed to fetch user info");
       }
@@ -57,33 +58,40 @@ function App() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // Handle form submission
-    console.log("Username:", username);
-    console.log("Password:", password);
-    fetch("http://localhost:8080/api/identity/auth", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json", // Set the content type to JSON
-      },
-      body: JSON.stringify({
-        email: username,
-        password: password,
-      }),
-    })
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        console.log("Response body:", data);
-        setToken(data.result.token);
-        fetchUserInfo();
-        navigate("/");
-      })
-      .catch((error) => {
-        console.log(error);
+
+    try {
+      const response = await fetch("http://localhost:8080/api/identity/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: username,
+          password: password,
+        }),
       });
+
+      const data = await response.json();
+      if (response.ok) {
+        console.log("Response body:", data);
+        setToken(data.result.token); // Save the token to local storage
+
+        // Fetch user info after successful login and wait for the result
+        const userInfo = await fetchUserInfo();
+
+        if (userInfo) {
+          navigate("/home"); // Navigate to home after fetching user info
+        } else {
+          console.error("Failed to retrieve user info.");
+        }
+      } else {
+        console.error("Login failed", data);
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+    }
   };
 
   const [selectedUser, setSelectedUser] = useState("Customer");
