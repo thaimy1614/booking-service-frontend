@@ -1,10 +1,38 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./header.css";
 import { NavLink } from "react-router-dom";
 import { getToken } from "../../../services/localStorageService";
+import LogoutIcon from '@mui/icons-material/Logout';
+import { logOut } from "../../../services/authenticationService";
 
 export const Header = () => {
-  
+  const [navLink, setNavLink] = useState("");
+  const [dropdownVisible, setDropdownVisible] = useState(false);
+
+  useEffect(() => {
+    const token = getToken();
+    const userInfo = "ABC";
+    if (token) {
+      setNavLink(userInfo);
+    } else {
+      setNavLink("Login");
+    }
+  }, []);
+
+  const handleMouseEnter = () => {
+    setDropdownVisible(true);
+  };
+
+  const handleMouseLeave = () => {
+    setDropdownVisible(false);
+  };
+
+  const handleLogout = (event) => {
+    logOut();
+    window.location.href = "/login";
+  };
+
+
   return (
     <header className="header-bar">
       <NavLink to="/home">
@@ -16,9 +44,24 @@ export const Header = () => {
         <NavLink to="/about">About us</NavLink>
         <NavLink to="/contact">Contact</NavLink>
       </nav>
-      <NavLink to="/login" className="login-btn">
-        Login
-      </NavLink>
+      <div 
+        className="user-menu"
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+      >
+        <NavLink to={navLink === "ABC" ? "#" : "/login"} className="login-btn">
+          {navLink}
+        </NavLink>
+
+        {/* Dropdown menu */}
+        {navLink === "ABC" && dropdownVisible && (
+          <div className="dropdown">
+            <NavLink to="/user/user-info">User Info</NavLink>
+            <NavLink to="/history">History</NavLink>
+            <NavLink onClick={handleLogout}>Logout <LogoutIcon /></NavLink>
+          </div>
+        )}
+      </div>
     </header>
   );
 };

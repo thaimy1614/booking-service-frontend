@@ -45,3 +45,40 @@ nav {
   cursor: pointer;
   text-decoration: none;
 }
+
+.user-menu {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown {
+  display: block;
+  position: absolute;
+  right: 0;
+  background-color: white;
+  min-width: 150px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 4px;
+}
+
+.dropdown a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {
+  background-color: #f1f1f1;
+}
+
+/* Hide the dropdown initially */
+.user-menu .dropdown {
+  display: none;
+}
+
+/* Show dropdown on hover */
+.user-menu:hover .dropdown {
+  display: block;
+}
