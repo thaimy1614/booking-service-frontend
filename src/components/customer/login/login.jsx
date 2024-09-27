@@ -2,12 +2,31 @@ import React, { useEffect, useState } from "react";
 import "./login.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
-import { getToken, setToken } from "../../../services/localStorageService";
+import { getToken, setToken, setUserInfo } from "../../../services/localStorageService";
 import { useNavigate } from "react-router-dom";
 import { OAuthConfig } from "../../../configurations/configuration";
 
 function App() {
   const navigate = useNavigate();
+
+  const fetchUserInfo = async () => {
+    try {
+      const response = await fetch("http://localhost:8080/api/user/profile", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${getToken()}`,
+        },
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setUserInfo(data.result)
+      } else {
+        console.error("Failed to fetch user info");
+      }
+    } catch (error) {
+      console.error("Error fetching user info:", error);
+    }
+  };
 
   const handleClick = () => {
     const callbackUrl = OAuthConfig.redirectUri;
@@ -55,6 +74,7 @@ function App() {
       .then((data) => {
         console.log("Response body:", data);
         setToken(data.result.token);
+        fetchUserInfo();
         navigate("/");
       })
       .catch((error) => {
