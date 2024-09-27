@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./header.css";
 import { NavLink } from "react-router-dom";
+import { getToken } from "../../../services/localStorageService";
 
 export const Header = () => {
+  
   return (
     <header className="header-bar">
       <NavLink to="/home">
