@@ -60,8 +60,9 @@ export const Header = () => {
         {/* Dropdown menu */}
         {navLink !== "Login" && dropdownVisible && (
           <div className="dropdown">
-            <NavLink to="/user/user-info">User Info</NavLink>
+            <NavLink to="/user/my-info">User Info</NavLink>
             <NavLink to="/history">History</NavLink>
+            <NavLink to="/user/change-password">Change Password</NavLink>
             <NavLink onClick={handleLogout}>
               Logout <LogoutIcon />
             </NavLink>

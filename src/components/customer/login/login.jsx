@@ -7,31 +7,33 @@ import {
   setToken,
   setUserInfo,
 } from "../../../services/localStorageService";
-import { useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { OAuthConfig } from "../../../configurations/configuration";
+
+export const fetchUserInfo = async () => {
+  try {
+    const response = await fetch(process.env.REACT_APP_API+"/user/profile", {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${getToken()}`,
+      },
+    });
+    const data = await response.json();
+    if (response.ok) {
+      setUserInfo(JSON.stringify(data.result));
+      return data.result;
+    } else {
+      console.error("Failed to fetch user info");
+    }
+  } catch (error) {
+    console.error("Error fetching user info:", error);
+  }
+};
 
 function App() {
   const navigate = useNavigate();
 
-  const fetchUserInfo = async () => {
-    try {
-      const response = await fetch("http://localhost:8080/api/user/profile", {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${getToken()}`,
-        },
-      });
-      const data = await response.json();
-      if (response.ok) {
-        setUserInfo(JSON.stringify(data.result));
-        return data.result;
-      } else {
-        console.error("Failed to fetch user info");
-      }
-    } catch (error) {
-      console.error("Error fetching user info:", error);
-    }
-  };
+  
 
   const handleClick = () => {
     const callbackUrl = OAuthConfig.redirectUri;
@@ -62,7 +64,7 @@ function App() {
     event.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:8080/api/identity/auth", {
+      const response = await fetch(process.env.REACT_APP_API+"/identity/auth", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -146,7 +148,7 @@ function App() {
               <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Save password</label>
             </div>
-            <div className="forgot-password">Forgot password</div>
+            <NavLink to={"/user/forget-password"} className="forgot-password">Forgot password</NavLink>
           </div>
           <button className="google-signin" onClick={handleClick}>
             <img src="/assets/img/google.png" alt="Google" />

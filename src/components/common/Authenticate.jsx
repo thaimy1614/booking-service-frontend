@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { setToken } from "../../services/localStorageService";
 import { Box, CircularProgress, Typography } from "@mui/material";
+import { fetchUserInfo } from "../customer/login/login";
 
 export default function Authenticate() {
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function Authenticate() {
       const authCode = isMatch[1];
 
       fetch(
-        `http://localhost:8080/api/identity/outbound/authentication?code=${authCode}`,
+        `${process.env.REACT_APP_API}/identity/outbound/authentication?code=${authCode}`,
         {
           method: "POST",
         }
@@ -35,9 +36,23 @@ export default function Authenticate() {
   }, []);
 
   useEffect(() => {
-    if (isLoggedin) {
-      navigate("/");
-    }
+    const fetchUserAndNavigate = async () => {
+      if (isLoggedin) {
+        try {
+          const userInfo = await fetchUserInfo(); // Wait for user info fetch
+
+          if (userInfo) {
+            navigate("/home"); // Navigate to home after fetching user info
+          } else {
+            console.error("Failed to retrieve user info.");
+          }
+        } catch (error) {
+          console.error("Error fetching user info:", error);
+        }
+      }
+    };
+
+    fetchUserAndNavigate();
   }, [isLoggedin, navigate]);
 
   return (

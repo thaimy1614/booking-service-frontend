@@ -9,6 +9,7 @@ import Signup from "./components/customer/signup/signup";
 import Authenticate from "./components/common/Authenticate";
 import ChangePassword from "./components/customer/change-password/change-password";
 import ForgetPassword from "./components/customer/forget-password/forget-password";
+import UserInfo from "./components/customer/user-info/user-info";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/authenticate" element={<Authenticate />} />
         <Route path="/user/change-password" element={<ChangePassword />} />
         <Route path="/user/forget-password" element={<ForgetPassword />} />
+        <Route path="/user/my-info" element={<UserInfo />} />
       </Routes>
     </div>
   );
