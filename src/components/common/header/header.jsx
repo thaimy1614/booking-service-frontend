@@ -43,10 +43,10 @@ export const Header = () => {
         <img src="/assets/img/logo.png" alt="Logo" />
       </NavLink>
       <nav className="nav-menu">
-        <NavLink to="/service">Service</NavLink>
-        <NavLink to="/news">News</NavLink>
-        <NavLink to="/about">About us</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/service" className={({ isActive }) => (isActive ? "active-link" : "")}>Service</NavLink>
+        <NavLink to="/news" className={({ isActive }) => (isActive ? "active-link" : "")}>News</NavLink>
+        <NavLink to="/about" className={({ isActive }) => (isActive ? "active-link" : "")}>About us</NavLink>
+        <NavLink to="/contact" className={({ isActive }) => (isActive ? "active-link" : "")}>Contact</NavLink>
       </nav>
       <div
         className="user-menu"
