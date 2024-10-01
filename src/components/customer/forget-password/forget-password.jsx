@@ -124,12 +124,12 @@ function ForgetPassword() {
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
                   type="text"
-                  placeholder="Email"
+                  placeholder="OTP"
                 />
               </div>
 
               <button type="submit" className="login-btn-2">
-                Get OTP
+                GET NEW PASSWORD
               </button>
             </form>
           </div>
