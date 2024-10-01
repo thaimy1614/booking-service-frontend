@@ -12,15 +12,11 @@ export const Footer = () => {
       </div>
       <div className="footer-columns">
         <div className="footer-column">
-          <h2>Address</h2>
-          <br></br>
-          <p>VP HCM</p>
-          <br></br>
-          <p>8th Floor, More Building, 36 Mac Dinh Chi, District 1</p>
-          <br></br>
           <div className="social-icons">
-            <img src="/assets/img/gmail.png" alt="Gmail" />
-            <img src="/assets/img/facebook.png" alt="Facebook" />
+            <a href="https://www.facebook.com/profile.php?id=61566307315716" target="_blank" rel="noreferrer noopener"><img src="/assets/img/facebook.png" alt="Facebook" /></a>
+            <a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=sservice.ia@gmail.com&tf=1" target="_blank" rel="noreferrer noopener"><img src="/assets/img/gmail.png" alt="Gmail" /></a>
+            
+            
           </div>
         </div>
         <div className="footer-column">

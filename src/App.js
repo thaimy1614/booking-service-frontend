@@ -10,6 +10,7 @@ import Authenticate from "./components/common/Authenticate";
 import ChangePassword from "./components/customer/change-password/change-password";
 import ForgetPassword from "./components/customer/forget-password/forget-password";
 import UserInfo from "./components/customer/user-info/user-info";
+import ScrollToTop from "./components/common/ScrollToTop";
 
 const App = () => {
   return (
