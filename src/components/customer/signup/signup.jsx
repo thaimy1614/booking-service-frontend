@@ -25,7 +25,7 @@ function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch(process.env.REACT_APP_API+"/identity/signup", {
+    fetch(process.env.REACT_APP_API + "/identity/signup", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Set the content type to JSON

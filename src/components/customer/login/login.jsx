@@ -12,7 +12,7 @@ import { OAuthConfig } from "../../../configurations/configuration";
 
 export const fetchUserInfo = async () => {
   try {
-    const response = await fetch(process.env.REACT_APP_API+"/user/profile", {
+    const response = await fetch(process.env.REACT_APP_API + "/user/profile", {
       method: "GET",
       headers: {
         Authorization: `Bearer ${getToken()}`,
@@ -32,8 +32,6 @@ export const fetchUserInfo = async () => {
 
 function App() {
   const navigate = useNavigate();
-
-  
 
   const handleClick = () => {
     const callbackUrl = OAuthConfig.redirectUri;
@@ -64,16 +62,19 @@ function App() {
     event.preventDefault();
 
     try {
-      const response = await fetch(process.env.REACT_APP_API+"/identity/auth", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email: username,
-          password: password,
-        }),
-      });
+      const response = await fetch(
+        process.env.REACT_APP_API + "/identity/auth",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: username,
+            password: password,
+          }),
+        }
+      );
 
       const data = await response.json();
       if (response.ok) {
@@ -148,7 +149,9 @@ function App() {
               <input type="checkbox" id="remember-me" />
               <label htmlFor="remember-me">Save password</label>
             </div>
-            <NavLink to={"/user/forget-password"} className="forgot-password">Forgot password</NavLink>
+            <NavLink to={"/user/forget-password"} className="forgot-password">
+              Forgot password
+            </NavLink>
           </div>
           <button className="google-signin" onClick={handleClick}>
             <img src="/assets/img/google.png" alt="Google" />

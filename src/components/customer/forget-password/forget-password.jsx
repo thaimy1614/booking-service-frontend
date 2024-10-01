@@ -12,7 +12,7 @@ function ForgetPassword() {
   const handleCheckOTP = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:8080/api/identity/forget-password/check-otp", {
+    fetch(process.env.REACT_APP_API + "/identity/forget-password/check-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Set the content type to JSON
@@ -48,7 +48,7 @@ function ForgetPassword() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    fetch("http://localhost:8080/api/identity/forget-password/send-otp", {
+    fetch(process.env.REACT_APP_API + "/identity/forget-password/send-otp", {
       method: "POST",
       headers: {
         "Content-Type": "application/json", // Set the content type to JSON

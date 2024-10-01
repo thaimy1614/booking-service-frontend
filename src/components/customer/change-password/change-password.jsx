@@ -34,7 +34,7 @@ function ChangePassword() {
       setErrorMessage(""); // Clear error message if passwords match
     }
 
-    fetch("http://localhost:8080/api/identity/change-password", {
+    fetch(process.env.REACT_APP_API + "/identity/change-password", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
