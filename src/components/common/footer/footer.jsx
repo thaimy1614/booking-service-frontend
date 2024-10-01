@@ -12,57 +12,47 @@ export const Footer = () => {
       </div>
       <div className="footer-columns">
         <div className="footer-column">
+        <h2>Kết nối tới S-Service</h2>
           <div className="social-icons">
+            <br></br>
             <a href="https://www.facebook.com/profile.php?id=61566307315716" target="_blank" rel="noreferrer noopener"><img src="/assets/img/facebook.png" alt="Facebook" /></a>
             <a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=sservice.ia@gmail.com&tf=1" target="_blank" rel="noreferrer noopener"><img src="/assets/img/gmail.png" alt="Gmail" /></a>
-            
-            
           </div>
         </div>
         <div className="footer-column">
-          <h2>About Us</h2>
+          <h2>Về chúng tôi</h2>
           <br></br>
-          <p>About Tracky</p>
+          <p>Giới thiệu</p>
           <br></br>
-          <p>Tracky Culture</p>
+          <p>Văn hóa S-Service</p>
           <br></br>
-          <p>Recruitment</p>
+          <p>Tuyển dụng</p>
           <br></br>
-          <p>Human Resources</p>
+          <p>Nhân viên</p>
         </div>
         <div className="footer-column">
-          <h2>Services Provided</h2>
+          <h2>Dịch vụ</h2>
           <br></br>
-          <p>Brand Consulting</p>
+          <p>Điện toán đám mây</p>
           <br></br>
-          <p>Brand Design</p>
+          <p>Dịch vụ kỹ thuật</p>
           <br></br>
-          <p>Digital Brand Identity</p>
+          <p>Dịch vụ dữ liệu</p>
           <br></br>
-          <p>Packaging and Labeling</p>
+          <p>Cơ sở hạ tầng CNTT</p>
           <br></br>
-          <p>New Branding</p>
-          <br></br>
-          <p>Communication Plan</p>
-          <br></br>
-          <p>Digital Marketing</p>
+          <p>Bảo mật thông tin</p>
         </div>
         <div className="footer-column">
-          <h2>Project Implementation</h2>
+          <h2>Dự án đã thực hiện</h2>
           <br></br>
-          <p>Logo</p>
+          <p>Điện toán đám mây</p>
           <br></br>
-          <p>Naming / Slogan</p>
+          <p>Dịch vụ kỹ thuật</p>
           <br></br>
-          <p>Identity</p>
+          <p>Dịch vụ dữ liệu</p>
           <br></br>
-          <p>Web / App</p>
-          <br></br>
-          <p>Packaging</p>
-          <br></br>
-          <p>Catalouge / Profile</p>
-          <br></br>
-          <p>Annual Report</p>
+          <p>Báo cáo thường niên</p>
         </div>
       </div>
     </footer>
