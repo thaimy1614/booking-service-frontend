@@ -10,7 +10,7 @@ import Authenticate from "./components/common/Authenticate";
 import ChangePassword from "./components/customer/change-password/change-password";
 import ForgetPassword from "./components/customer/forget-password/forget-password";
 import UserInfo from "./components/customer/user-info/user-info";
-import ScrollToTop from "./components/common/ScrollToTop";
+import Contact from "./components/customer/contact/contact";
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/service" element={<Service />} />
         <Route path="/news" element={<News />} />
         <Route path="/about" element={<About />} />
-        <Route path="/contact" element={<Service />} />
+        <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/authenticate" element={<Authenticate />} />
