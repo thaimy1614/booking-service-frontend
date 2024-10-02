@@ -87,7 +87,7 @@ const PricingCard = ({ title, description, items }) => {
 export const Certificates = () => {
   return (
     <section className="certificates">
-      <h2>Certificate</h2>
+      <h2>Chứng Chỉ</h2>
       <div>
         <img src="/assets/img/certificate.png" alt="Certificate" />
       </div>
