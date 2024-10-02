@@ -68,7 +68,7 @@ export default function Authenticate() {
         }}
       >
         <CircularProgress></CircularProgress>
-        <Typography>Authenticating...</Typography>
+        <Typography>Đang xác minh...</Typography>
       </Box>
     </>
   );

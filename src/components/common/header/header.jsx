@@ -20,7 +20,7 @@ export const Header = () => {
       }
       setNavLink(name);
     } else {
-      setNavLink("Login");
+      setNavLink("Đăng Nhập");
     }
   }, []);
 
@@ -43,28 +43,28 @@ export const Header = () => {
         <img src="/assets/img/logo.png" alt="Logo" />
       </NavLink>
       <nav className="nav-menu">
-        <NavLink to="/service" className={({ isActive }) => (isActive ? "active-link" : "")}>Service</NavLink>
-        <NavLink to="/news" className={({ isActive }) => (isActive ? "active-link" : "")}>News</NavLink>
-        <NavLink to="/about" className={({ isActive }) => (isActive ? "active-link" : "")}>About us</NavLink>
-        <NavLink to="/contact" className={({ isActive }) => (isActive ? "active-link" : "")}>Contact</NavLink>
+        <NavLink to="/service" className={({ isActive }) => (isActive ? "active-link" : "")}>Dịch Vụ</NavLink>
+        <NavLink to="/news" className={({ isActive }) => (isActive ? "active-link" : "")}>Tin Tức</NavLink>
+        <NavLink to="/about" className={({ isActive }) => (isActive ? "active-link" : "")}>Về Chúng Tôi</NavLink>
+        <NavLink to="/contact" className={({ isActive }) => (isActive ? "active-link" : "")}>Liên Hệ</NavLink>
       </nav>
       <div
         className="user-menu"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <NavLink to={navLink !== "Login" ? "#" : "/login"} className="login-btn">
+        <NavLink to={navLink !== "Đăng Nhập" ? "#" : "/login"} className="login-btn">
           {navLink}
         </NavLink>
 
         {/* Dropdown menu */}
-        {navLink !== "Login" && dropdownVisible && (
+        {navLink !== "Đăng Nhập" && dropdownVisible && (
           <div className="dropdown">
-            <NavLink to="/user/my-info">User Info</NavLink>
-            <NavLink to="/history">History</NavLink>
-            <NavLink to="/user/change-password">Change Password</NavLink>
+            <NavLink to="/user/my-info">Thông tin cá nhân</NavLink>
+            <NavLink to="/history">Lịch sử</NavLink>
+            <NavLink to="/user/change-password">Đổi mật khẩu</NavLink>
             <NavLink onClick={handleLogout}>
-              Logout <LogoutIcon />
+              Đăng xuất <LogoutIcon />
             </NavLink>
           </div>
         )}

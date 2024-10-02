@@ -5,10 +5,10 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-subscribe">
-        <h3>Sign up to receive the latest content from TRACKY</h3>
-        <input type="text" placeholder="Name" />
+        <h3>Đăng ký để nhận nội dung mới nhất từ ​​S-Service</h3>
+        <input type="text" placeholder="Tên" />
         <input type="email" placeholder="Email" />
-        <button className="footer-btn">Consult now</button>
+        <button className="footer-btn">Tư vấn ngay</button>
       </div>
       <div className="footer-columns">
         <div className="footer-column">

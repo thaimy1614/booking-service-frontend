@@ -1,9 +1,11 @@
-import { Box, CircularProgress, Typography } from "@mui/material";
+import { Box, CircularProgress, colors, Typography } from "@mui/material";
 import React from "react";
 
 const Loading = () => {
+  return (
     <>
       <Box
+        style={{ zIndex: "auto" }}
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -14,9 +16,10 @@ const Loading = () => {
         }}
       >
         <CircularProgress></CircularProgress>
-        <Typography>Authenticating...</Typography>
+        <Typography style={{ color: "red" }}>Đang tải...</Typography>
       </Box>
     </>
-}
+  );
+};
 
 export default Loading;

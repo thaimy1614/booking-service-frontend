@@ -85,7 +85,7 @@ function ForgetPassword() {
             <p className="error-message input-container">{errorMessage}</p>
           )}
           <div className="input-container">
-            <label>Your email</label>
+            <label>Email</label>
             <input
               value={email}
               onChange={(e) => setEmail(e.target.value)}
@@ -119,7 +119,7 @@ function ForgetPassword() {
                 <input value={email} type="text" placeholder="Email" readOnly />
               </div>
               <div className="input-container">
-                <label>Enter OTP</label>
+                <label>Nhập OTP</label>
                 <input
                   value={otp}
                   onChange={(e) => setOtp(e.target.value)}
@@ -129,7 +129,7 @@ function ForgetPassword() {
               </div>
 
               <button type="submit" className="login-btn-2">
-                GET NEW PASSWORD
+                Nhận Mật Khẩu Mới
               </button>
             </form>
           </div>

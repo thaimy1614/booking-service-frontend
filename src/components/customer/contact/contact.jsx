@@ -30,10 +30,10 @@ const SupportForm = () => {
   
     return (
       <div className="form-container">
-        <h2>Submit a support request</h2>
+        <h2>Gửi yêu cầu hỗ trợ</h2>
         <form onSubmit={handleSubmit} className="support-form">
           <label>
-            Full name
+            Tên
             <input type="text" name="fullName" value={formData.fullName} onChange={handleChange} />
           </label>
           <label>
@@ -41,26 +41,26 @@ const SupportForm = () => {
             <input type="email" name="email" value={formData.email} onChange={handleChange} required />
           </label>
           <label>
-            Phone number*
+            Số điện thoại*
             <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
           </label>
           <label>
-            Position*
+            Địa chỉ*
             <input type="text" name="position" value={formData.position} onChange={handleChange} required />
           </label>
           <label>
-            Company*
+            Công ty*
             <input type="text" name="company" value={formData.company} onChange={handleChange} required />
           </label>
           <label>
-            Subject*
+            Chủ thể*
             <input type="text" name="subject" value={formData.subject} onChange={handleChange} required />
           </label>
           <label>
-            Request details
+            Chi tiết yêu cầu
             <textarea name="details" value={formData.details} onChange={handleChange} rows="4"></textarea>
           </label>
-          <button type="submit">Submit request</button>
+          <button type="submit">Gửi Yêu Cầu</button>
         </form>
       </div>
     );
@@ -72,13 +72,13 @@ const MainContent = () => {
   return (
     <main>
       <section className="main-section">
-        <h1>What support do you need?</h1>
+        <h1>Bạn cần hỗ trợ gì?</h1>
         <p>
-        Please let us know exactly what issue you are having. Our support team is always ready to help.
+          Vui lòng cho chúng tôi biết chính xác vấn đề bạn đang gặp phải. Đội hỗ trợ của chúng tôi luôn sẵn sàng giúp đỡ.
         </p>
       </section>
       <section className="pricing-section">
-        <h2>Support process</h2>
+        <h2>Quá trình hỗ trợ</h2>
         <img className="process" alt="process" src="/assets/img/process.png"/>
       </section>
       <section className="pricing-section">

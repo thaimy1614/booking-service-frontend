@@ -114,51 +114,44 @@ function App() {
               }`}
               onClick={() => handleUserTypeClick("Customer")}
             >
-              Customer
+              Login
             </div>
-            <div
-              className={`user-type ${
-                selectedUser === "Admin" ? "active" : ""
-              }`}
-              onClick={() => handleUserTypeClick("Admin")}
-            >
-              Admin
-            </div>
+            
           </div>
 
           <div className="input-container">
-            <label>Email or Username</label>
+            <label>Email hoặc Tên đăng nhập</label>
             <input
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               type="text"
-              placeholder="Email or Username"
+              placeholder="Email hoặc Tên đăng nhập"
             />
           </div>
           <div className="input-container">
-            <label>Password</label>
+            <label>Mật khẩu</label>
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              placeholder="Password"
+              placeholder="mật khẩu"
             />
           </div>
           <div className="options">
             <div className="remember-me">
               <input type="checkbox" id="remember-me" />
-              <label htmlFor="remember-me">Save password</label>
+              <label htmlFor="remember-me">Lưu mật khẩu</label>
             </div>
             <NavLink to={"/user/forget-password"} className="forgot-password">
-              Forgot password
+              Quên mật khẩu
             </NavLink>
           </div>
           <button className="google-signin" onClick={handleClick}>
             <img src="/assets/img/google.png" alt="Google" />
-            Sign in with Google
+            Đăng Nhập Với Google
           </button>
           <button type="submit" className="login-btn-2">
-            LOG IN
+            Đăng Nhập
           </button>
           <button
             onClick={() => {
@@ -166,7 +159,7 @@ function App() {
             }}
             className="login-btn-2"
           >
-            SIGN UP
+            Đăng Ký
           </button>
         </form>
       </div>

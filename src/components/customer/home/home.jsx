@@ -25,9 +25,9 @@ const MainSection = () => {
         <h1>
           <img src="/assets/img/big-logo.png" alt="LOGO"></img>
         </h1>
-        <p>Builds a team of experts knowledge about information security</p>
+        <p>Xây dựng đội ngũ chuyên gia am hiểu về bảo mật thông tin</p>
         <button className="main-btn">
-          GET START{" "}
+          Bắt Đầu{" "}
           <FontAwesomeIcon icon={faArrowUpRightDots} size="1x" color="white" />
         </button>
       </section>

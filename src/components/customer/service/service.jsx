@@ -7,15 +7,13 @@ const MainContent = () => {
   return (
     <main>
       <section className="main-section">
-        <h1>BRAND STRATEGY CONSULTING</h1>
+        <h1>DỊCH VỤ CỦA CHÚNG TÔI</h1>
         <p>
-          Support businesses in developing an overall brand strategy that is
-          consistent with their business model.
+        Dưới đây là các dịch vụ của chúng tôi, chúng tôi sẽ tư vấn thêm nếu bạn cần biết đầy đủ chính sách và thông tin.
         </p>
-        <button className="main-btn">Consult now</button>
+        <button className="main-btn">Tư vấn ngay</button>
       </section>
       <section className="pricing-section">
-        <h2>Brand strategy consulting includes</h2>
         <div className="pricing-cards">
           <PricingCard
             title="STARTER"
@@ -81,7 +79,7 @@ const PricingCard = ({ title, description, items }) => {
           <li key={index}>{item}</li>
         ))}
       </ul>
-      <button className="pricing-btn">Consult now</button>
+      <button className="pricing-btn">XEM CHI TIẾT</button>
     </div>
   );
 };
@@ -102,7 +100,6 @@ const Service = () => {
     <div className="app">
       <Header />
       <MainContent />
-      <Certificates />
       <Footer />
     </div>
   );

@@ -28,7 +28,7 @@ function ChangePassword() {
     event.preventDefault();
 
     if (newPassword !== reEnter) {
-      setErrorMessage("New Password and Re-enter New Password do not match"); // Set error message
+      setErrorMessage("Mật khẩu mới chưa trùng khớp"); // Set error message
       return;
     } else {
       setErrorMessage(""); // Clear error message if passwords match
@@ -51,10 +51,10 @@ function ChangePassword() {
       .then((data) => {
         console.log("Response body:", data);
         if (data.result === true) {
-          setErrorMessage("Change password successfully!");
+          setErrorMessage("Đổi mật khẩu thành công!");
         } else {
           setErrorMessage(
-            "Something went wrong, please try again with correct password"
+            "Vui lòng thử lại với mật khẩu chính xác"
           );
         }
       })
@@ -72,7 +72,7 @@ function ChangePassword() {
             <p className="error-message input-container">{errorMessage}</p>
           )}
           <div className="input-container">
-            <label>Old Password</label>
+            <label>Mật khẩu hiện tại</label>
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
@@ -81,7 +81,7 @@ function ChangePassword() {
             />
           </div>
           <div className="input-container">
-            <label>New Password</label>
+            <label>Mật khẩu mới</label>
             <input
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
@@ -90,7 +90,7 @@ function ChangePassword() {
             />
           </div>
           <div className="input-container">
-            <label>Re-enter New Password</label>
+            <label>Nhập lại mật khẩu mới</label>
             <input
               value={reEnter}
               onChange={(e) => setReEnter(e.target.value)}
@@ -99,7 +99,7 @@ function ChangePassword() {
             />
           </div>
           <button type="submit" className="login-btn-2">
-            Change Password
+            Đổi Mật Khẩu
           </button>
         </form>
       </div>

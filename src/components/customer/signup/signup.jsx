@@ -4,9 +4,11 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import { getToken } from "../../../services/localStorageService";
 import { useNavigate } from "react-router-dom";
+import Loading from "../../common/loading";
 
 function Signup() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const accessToken = getToken();
@@ -25,6 +27,7 @@ function Signup() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true);
     fetch(process.env.REACT_APP_API + "/identity/signup", {
       method: "POST",
       headers: {
@@ -43,11 +46,13 @@ function Signup() {
         return response.json();
       })
       .then((data) => {
+        setLoading(false);
         if (data.result.success != null) {
           navigate("/login");
         }
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   };
@@ -59,8 +64,11 @@ function Signup() {
   };
   return (
     <div className="app">
+      
       <div className="login-page">
         <Header />
+        {loading && <Loading />} {/* Show loading component when loading */}
+      
         <form component="form" onSubmit={handleSubmit} className="container">
           <div className="header-login">
             <div
@@ -153,6 +161,7 @@ function Signup() {
             SIGN UP
           </button>
         </form>
+
       </div>
       <Footer />
     </div>

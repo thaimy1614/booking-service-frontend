@@ -73,10 +73,10 @@ function UserInfo() {
             style={{ color: "greenyellow" }}
             hidden
           >
-            Please check your email to verify account!
+            Vui lòng kiểm tra email của bạn để xác nhận!
           </p>
           <p id="fail" className="message" style={{ color: "red" }} hidden>
-            Account already exists!
+            Tài khoản đã tồn tại!
           </p>
 
           {/* <div className="input-container">
@@ -85,12 +85,12 @@ function UserInfo() {
           </div> */}
 
           <div className="input-container">
-            <label>Full Name</label>
+            <label>Họ và tên</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              placeholder="Full Name"
+              placeholder="Họ và tên"
               required
             />
           </div>
@@ -105,29 +105,29 @@ function UserInfo() {
             />
           </div>
           <div className="input-container">
-            <label>Address</label>
+            <label>Địa chỉ</label>
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               type="text"
-              placeholder="Address"
+              placeholder="Địa chỉ"
             />
           </div>
           <div className="input-container">
-            <label>Phone Number</label>
+            <label>Số điện thoại</label>
             <input
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               type="text"
-              placeholder="Phone Number"
+              placeholder="Số điện thoại"
             />
           </div>
 
           <button type="submit" className="login-btn-2">
-            Change Information
+            Cập Nhật Thông Tin Cá Nhân
           </button>
           <NavLink to={"/home"} className="login-btn-2 back-home-btn">
-            Back To Home
+            Quay Về Trang Chủ
           </NavLink>
         </form>
       </div>

@@ -15,7 +15,7 @@ const ImageWithText = ({ imageUrl, hoverText, className }) => {
 const Project = () => {
   return (
     <section className="project">
-      <h2>OUR PROJECT</h2>
+      <h2>Dự Án Của Chúng Tôi</h2>
       <div>
         <img
           className="about-img-1"
@@ -30,7 +30,7 @@ const Project = () => {
 export const OurService = () => {
   return (
     <section>
-      <h2 className="service-title">OUR SERVICE</h2>
+      <h2 className="service-title">Dịch Vụ Của Chúng Tôi</h2>
       <div className="about">
         <div className="image-grid">
           <ImageWithText
@@ -64,7 +64,7 @@ const About = () => {
     <div className="app">
       <Header />
       <Project />
-      <h2 className="service-title">OUR SERVICE</h2>
+      <h2 className="service-title">Dịch Vụ Của Chúng Tôi</h2>
       <div className="about">
         <div className="image-grid">
           <ImageWithText

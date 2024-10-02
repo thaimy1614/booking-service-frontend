@@ -21,7 +21,7 @@ const Card = ({ img, title, description }) => {
       <img src={`/assets/img/` + img} alt={title} />
       <h2>{title}</h2>
       <p>{description}</p>
-      <a href="#">See more</a>
+      <a href="#">Xem thêm</a>
     </div>
   );
 };
@@ -86,7 +86,7 @@ export const MainContent = () => {
   return (
     <main className="main-news">
       <section className="main-section">
-        <h1>SOME NEWS WORTH NOTING TODAY</h1>
+        <h1>MỘT SỐ TIN TỨC XIN LƯU Ý HÔM NAY</h1>
       </section>
       <NewCards />
     </main>
