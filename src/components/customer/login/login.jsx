@@ -9,6 +9,7 @@ import {
 } from "../../../services/localStorageService";
 import { NavLink, useNavigate } from "react-router-dom";
 import { OAuthConfig } from "../../../configurations/configuration";
+import MessageModal from "../../common/message-modal";
 
 export const fetchUserInfo = async () => {
   
@@ -33,6 +34,9 @@ export const fetchUserInfo = async () => {
 
 function App() {
   const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
+  const [messageType, setMessageType] = useState("fail");
+  const [failMessage, setFailMessage] = useState("INCORRECT USERNAME OR PASSWORD!");
 
   const handleClick = () => {
     const callbackUrl = OAuthConfig.redirectUri;
@@ -89,12 +93,17 @@ function App() {
           navigate("/home"); // Navigate to home after fetching user info
         } else {
           console.error("Failed to retrieve user info.");
+          setFailMessage("Something went wrong, please try again!")
+          setModalOpen(true);
         }
       } else {
         console.error("Login failed", data);
+        setModalOpen(true);
       }
     } catch (error) {
       console.error("Login error:", error);
+      setFailMessage("Something went wrong, please try again!")
+      setModalOpen(true);
     }
   };
 
@@ -102,6 +111,9 @@ function App() {
 
   const handleUserTypeClick = (userType) => {
     setSelectedUser(userType);
+  };
+  const handleClose = () => {
+    setModalOpen(false);
   };
   return (
     <div className="app">
@@ -164,6 +176,14 @@ function App() {
           </button>
         </form>
       </div>
+      {modalOpen && (
+        <MessageModal
+          message={failMessage}
+          open={modalOpen}
+          handleClose={handleClose}
+          messageType={messageType}
+        />
+      )}
       <Footer />
     </div>
   );

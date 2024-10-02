@@ -66,6 +66,7 @@ function Signup() {
       .catch((error) => {
         setLoading(false);
         setMessageType(false);
+        setFailMessage("Something went wrong, please try again!")
         setModalOpen(true);
         console.log(error);
       });
