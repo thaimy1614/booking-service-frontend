@@ -11,6 +11,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { OAuthConfig } from "../../../configurations/configuration";
 
 export const fetchUserInfo = async () => {
+  
   try {
     const response = await fetch(process.env.REACT_APP_API + "/user/profile", {
       method: "GET",

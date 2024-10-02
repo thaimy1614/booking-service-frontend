@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./service.css";
+import Loading from "../../common/loading";
 
 const MainContent = ({services}) => {
   return (
@@ -55,9 +56,10 @@ export const Certificates = () => {
 
 const Service = () => {
   const [service, setService] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   const fetchServices = async () => {
-
+    setLoading(true);
     try {
       const response = await fetch(process.env.REACT_APP_API + "/category", {
         method: "GET",
@@ -69,9 +71,12 @@ const Service = () => {
         return data.result;
       } else {
         console.error("Failed to fetch services");
+        setLoading(false);
       }
     } catch (error) {
       console.error("Error fetching services:", error);
+      setLoading(false);
+
     }
   };
 
@@ -82,7 +87,8 @@ const Service = () => {
   return (
     <div className="app">
       <Header />
-      {service.length > 0 ? <MainContent services={service} /> : <p>Loading...</p>}
+      {loading && <Loading />}
+      <MainContent services={service} />
       <Footer />
     </div>
   );

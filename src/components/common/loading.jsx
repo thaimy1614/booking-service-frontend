@@ -5,18 +5,23 @@ const Loading = () => {
   return (
     <>
       <Box
-        style={{ zIndex: "auto" }}
         sx={{
+          position: "fixed", // Fix position to overlay other elements
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          zIndex: 1000,
           display: "flex",
           flexDirection: "column",
           gap: "30px",
           justifyContent: "center",
           alignItems: "center",
-          height: "100vh",
+          backgroundColor: "rgba(255, 255, 255, 0.8)",
         }}
       >
-        <CircularProgress></CircularProgress>
-        <Typography style={{ color: "red" }}>Đang tải...</Typography>
+        <CircularProgress style={{ color: "red" }}></CircularProgress>
+        <Typography style={{ color: "red", fontSize: "30px" }}>Đang tải...</Typography>
       </Box>
     </>
   );

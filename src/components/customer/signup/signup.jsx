@@ -5,10 +5,17 @@ import { Footer } from "../../common/footer/footer";
 import { getToken } from "../../../services/localStorageService";
 import { useNavigate } from "react-router-dom";
 import Loading from "../../common/loading";
+import MessageModal from "../../common/message-modal";
 
 function Signup() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [messageType, setMessageType] = useState("success");
+  const [successMessage, setSuccessMessage] = useState(
+    "SIGNUP SUCCESSFULLY, PLEASE CHECK YOUR EMAIL TO VERIFY ACCOUNT"
+  );
+  const [failMessage, setFailMessage] = useState("ACCOUNT ALREADY EXISTS");
 
   useEffect(() => {
     const accessToken = getToken();
@@ -48,34 +55,37 @@ function Signup() {
       .then((data) => {
         setLoading(false);
         if (data.result.success != null) {
-          navigate("/login");
+          if (data.result.success) {
+            setMessageType("success");
+          } else {
+            setMessageType("fail");
+          }
+          setModalOpen(true);
         }
       })
       .catch((error) => {
         setLoading(false);
+        setMessageType(false);
+        setModalOpen(true);
         console.log(error);
       });
   };
 
   const [selectedUser, setSelectedUser] = useState("Customer");
-
-  const handleUserTypeClick = (userType) => {
-    setSelectedUser(userType);
+  const handleClose = () => {
+    setModalOpen(false);
   };
   return (
     <div className="app">
-      
       <div className="login-page">
         <Header />
         {loading && <Loading />} {/* Show loading component when loading */}
-      
         <form component="form" onSubmit={handleSubmit} className="container">
           <div className="header-login">
             <div
               className={`user-type ${
                 selectedUser === "Customer" ? "active" : ""
               }`}
-              onClick={() => handleUserTypeClick("Customer")}
             >
               Sign Up
             </div>
@@ -161,8 +171,15 @@ function Signup() {
             SIGN UP
           </button>
         </form>
-
       </div>
+      {modalOpen && (
+        <MessageModal
+          message={messageType === "success" ? successMessage : failMessage}
+          open={modalOpen}
+          handleClose={handleClose}
+          messageType={messageType}
+        />
+      )}
       <Footer />
     </div>
   );
