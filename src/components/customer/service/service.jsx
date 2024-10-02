@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./service.css";
 
-const MainContent = () => {
+const MainContent = ({services}) => {
   return (
     <main>
       <section className="main-section">
@@ -15,68 +15,26 @@ const MainContent = () => {
       </section>
       <section className="pricing-section">
         <div className="pricing-cards">
-          <PricingCard
-            title="STARTER"
-            description="Professional Logo For New Business"
-            items={[
-              "Brand Research",
-              "Online Survey",
-              "Customer Research",
-              "Strategic Consulting",
-              "02 Design Concepts",
-              "02 Designers Participated",
-              "02 Revisions",
-              "Brief Online Survey",
-              "Logo Meaning Analysis",
-              "Logo Original File",
-            ]}
-          />
-          <PricingCard
-            title="PRO"
-            description="For Small Business, Big Brand"
-            items={[
-              "Brand Research",
-              "Online Survey",
-              "Customer Research",
-              "Strategic Consulting",
-              "02 Design Concepts",
-              "02 Designers Participated",
-              "02 Revisions",
-              "Brief Online Survey",
-              "Logo Meaning Analysis",
-              "Logo Original File",
-            ]}
-          />
-          <PricingCard
-            title="INTERPRISE"
-            description="For Big brand, Corporation, Group"
-            items={[
-              "Brand Research",
-              "Online Survey",
-              "Customer Research",
-              "Strategic Consulting",
-              "02 Design Concepts",
-              "02 Designers Participated",
-              "02 Revisions",
-              "Brief Online Survey",
-              "Logo Meaning Analysis",
-              "Logo Original File",
-            ]}
-          />
+        {services && services.length > 0 ? (
+            services.map((category) => (
+              <PricingCard title={category.name} items={category.services} />
+            ))
+          ) : (
+            <p>No services available.</p>
+          )}
         </div>
       </section>
     </main>
   );
 };
 
-const PricingCard = ({ title, description, items }) => {
+const PricingCard = ({ title, items }) => {
   return (
     <div className="pricing-card">
       <h3>{title}</h3>
-      <p>{description}</p>
       <ul>
         {items.map((item, index) => (
-          <li key={index}>{item}</li>
+          <li key={item.id}>{item.name}</li>
         ))}
       </ul>
       <button className="pricing-btn">XEM CHI TIẾT</button>
@@ -96,10 +54,35 @@ export const Certificates = () => {
 };
 
 const Service = () => {
+  const [service, setService] = useState([]);
+
+  const fetchServices = async () => {
+
+    try {
+      const response = await fetch(process.env.REACT_APP_API + "/category", {
+        method: "GET",
+      });
+      const data = await response.json();
+      if (response.ok) {
+        setService(data.result);
+        console.log(data.result)
+        return data.result;
+      } else {
+        console.error("Failed to fetch services");
+      }
+    } catch (error) {
+      console.error("Error fetching services:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchServices();
+  }, []);
+
   return (
     <div className="app">
       <Header />
-      <MainContent />
+      {service.length > 0 ? <MainContent services={service} /> : <p>Loading...</p>}
       <Footer />
     </div>
   );
