@@ -1,4 +1,4 @@
-import { Box, CircularProgress, colors, Typography } from "@mui/material";
+import { Box, CircularProgress, Typography } from "@mui/material";
 import React from "react";
 
 const Loading = () => {

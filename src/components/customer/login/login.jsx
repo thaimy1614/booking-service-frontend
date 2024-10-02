@@ -10,6 +10,7 @@ import {
 import { NavLink, useNavigate } from "react-router-dom";
 import { OAuthConfig } from "../../../configurations/configuration";
 import MessageModal from "../../common/message-modal";
+import Loading from "../../common/loading";
 
 export const fetchUserInfo = async () => {
   
@@ -34,8 +35,9 @@ export const fetchUserInfo = async () => {
 
 function App() {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [messageType, setMessageType] = useState("fail");
+  const [messageType] = useState("fail");
   const [failMessage, setFailMessage] = useState("INCORRECT USERNAME OR PASSWORD!");
 
   const handleClick = () => {
@@ -65,7 +67,7 @@ function App() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+    setLoading(true);
     try {
       const response = await fetch(
         process.env.REACT_APP_API + "/identity/auth",
@@ -80,7 +82,7 @@ function App() {
           }),
         }
       );
-
+      setLoading(false);
       const data = await response.json();
       if (response.ok) {
         console.log("Response body:", data);
@@ -101,6 +103,7 @@ function App() {
         setModalOpen(true);
       }
     } catch (error) {
+      setLoading(false);
       console.error("Login error:", error);
       setFailMessage("Something went wrong, please try again!")
       setModalOpen(true);
@@ -119,6 +122,7 @@ function App() {
     <div className="app">
       <div className="login-page">
         <Header />
+        {loading && <Loading />}
         <form className="container" component="form" onSubmit={handleSubmit}>
           <div className="header-login">
             <div

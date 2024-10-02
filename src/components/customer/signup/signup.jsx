@@ -12,7 +12,7 @@ function Signup() {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [messageType, setMessageType] = useState("success");
-  const [successMessage, setSuccessMessage] = useState(
+  const [successMessage] = useState(
     "SIGNUP SUCCESSFULLY, PLEASE CHECK YOUR EMAIL TO VERIFY ACCOUNT"
   );
   const [failMessage, setFailMessage] = useState("ACCOUNT ALREADY EXISTS");
@@ -72,7 +72,7 @@ function Signup() {
       });
   };
 
-  const [selectedUser, setSelectedUser] = useState("Customer");
+  const [selectedUser] = useState("Customer");
   const handleClose = () => {
     setModalOpen(false);
   };

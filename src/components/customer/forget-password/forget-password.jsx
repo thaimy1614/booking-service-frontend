@@ -2,16 +2,19 @@ import React, { useState } from "react";
 import "./forget-password.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
+import Loading from "../../common/loading";
 
 function ForgetPassword() {
   const [email, setEmail] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [isModalOTPOpen, setIsModalOTPOpen] = useState(false);
   const [otp, setOtp] = useState("");
+  const [loading, setLoading] = useState(false);
+
 
   const handleCheckOTP = (event) => {
     event.preventDefault();
-
+    setLoading(true)
     fetch(process.env.REACT_APP_API + "/identity/forget-password/check-otp", {
       method: "POST",
       headers: {
@@ -26,6 +29,7 @@ function ForgetPassword() {
         return response.json();
       })
       .then((data) => {
+        setLoading(false)
         console.log("Response body:", data);
         if (data.result === true) {
           setErrorMessage("Please check your email to get new password"); // Open the modal if passwords don't match
@@ -37,6 +41,7 @@ function ForgetPassword() {
         }
       })
       .catch((error) => {
+        setLoading(false);
         console.log(error);
       });
   };
@@ -47,7 +52,7 @@ function ForgetPassword() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    setLoading(true);
     fetch(process.env.REACT_APP_API + "/identity/forget-password/send-otp", {
       method: "POST",
       headers: {
@@ -61,6 +66,7 @@ function ForgetPassword() {
         return response.json();
       })
       .then((data) => {
+        setLoading(false)
         console.log("Response body:", data);
         if (data.result === true) {
           setIsModalOTPOpen(true); // Open the modal if passwords don't match
@@ -73,6 +79,7 @@ function ForgetPassword() {
       })
       .catch((error) => {
         console.log(error);
+        setLoading(false);
       });
   };
 
@@ -80,6 +87,7 @@ function ForgetPassword() {
     <div className="app">
       <div className="login-page">
         <Header />
+        {loading && <Loading />}
         <form className="container" component="form" onSubmit={handleSubmit}>
           {errorMessage && (
             <p className="error-message input-container">{errorMessage}</p>
