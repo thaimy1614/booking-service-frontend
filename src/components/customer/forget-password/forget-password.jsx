@@ -3,18 +3,44 @@ import "./forget-password.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import Loading from "../../common/loading";
+import FormModal from "../../common/form-modal";
+import MessageModal from "../../common/message-modal";
 
 function ForgetPassword() {
   const [email, setEmail] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  const [isModalOTPOpen, setIsModalOTPOpen] = useState(false);
   const [otp, setOtp] = useState("");
+  const [isModalOTPOpen, setIsModalOTPOpen] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [messageModalOpen, setMessageModal] = useState(false);
+  const [messageType, setMessageType] = useState("fail");
+  const [message, setMessage] = useState(
+    "Vui lòng kiểm tra email, sau đó nhập OTP"
+  );
 
+  const checkOTPFormData = {
+    title: "Nhập OTP",
+    fields: [
+      {
+        label: "Email",
+        name: "email",
+        required: true,
+        onChange: (e) => setEmail(e.target.value),
+        disable: true,
+      },
+      {
+        label: "OTP",
+        name: "OTP",
+        type: "text",
+        required: true,
+        onChange: (e) => setOtp(e.target.value),
+      },
+    ],
+    submitText: "Nhận Mật Khẩu Mới",
+  };
 
   const handleCheckOTP = (event) => {
     event.preventDefault();
-    setLoading(true)
+    setLoading(true);
     fetch(process.env.REACT_APP_API + "/identity/forget-password/check-otp", {
       method: "POST",
       headers: {
@@ -29,25 +55,29 @@ function ForgetPassword() {
         return response.json();
       })
       .then((data) => {
-        setLoading(false)
+        setLoading(false);
         console.log("Response body:", data);
         if (data.result === true) {
-          setErrorMessage("Please check your email to get new password"); // Open the modal if passwords don't match
+          setIsModalOTPOpen(false);
+          setMessageType(true);
+          setMessage("Mật khẩu mới đã được cập nhật, vui lòng kiểm tra email!");
+          setMessageModal(true);
           return;
         } else {
-          setErrorMessage(
-            "Something went wrong, please try again with correct email!"
-          );
+          setIsModalOTPOpen(true);
+          setMessageType(false);
+          setMessage("OTP không chính xác, vui lòng thử lại!");
+          setMessageModal(true);
         }
       })
       .catch((error) => {
+        setIsModalOTPOpen(false);
         setLoading(false);
+        setMessageType(false);
+        setMessage("Đã có lỗi xảy ra, vui lòng thử lại!");
+        setMessageModal(true);
         console.log(error);
       });
-  };
-
-  const closeModalOTP = () => {
-    setIsModalOTPOpen(false);
   };
 
   const handleSubmit = (event) => {
@@ -66,21 +96,37 @@ function ForgetPassword() {
         return response.json();
       })
       .then((data) => {
-        setLoading(false)
+        setLoading(false);
         console.log("Response body:", data);
         if (data.result === true) {
-          setIsModalOTPOpen(true); // Open the modal if passwords don't match
+          setMessageType(true);
+          setMessage("Vui lòng kiểm tra email, sau đó nhập OTP");
+          setIsModalOTPOpen(true);
+          setMessageModal(true);
           return;
         } else {
-          setErrorMessage(
-            "Something went wrong, please try again with correct email!"
-          );
+          setMessageType(false);
+          setMessage("Email không tồn tại, vui lòng nhập lại chính xác");
+          setMessageModal(true);
         }
       })
       .catch((error) => {
         console.log(error);
         setLoading(false);
+        setMessageType(false);
+        setMessage("Đã có lỗi xảy ra, vui lòng thử lại!");
+        setMessageModal(true);
       });
+  };
+
+  const handleFormModalClose = () => {
+    setIsModalOTPOpen(false);
+    setLoading(false);
+    setMessageModal(false);
+  };
+  const handleMessageModalClose = () => {
+    setLoading(false);
+    setMessageModal(false);
   };
 
   return (
@@ -89,9 +135,6 @@ function ForgetPassword() {
         <Header />
         {loading && <Loading />}
         <form className="container" component="form" onSubmit={handleSubmit}>
-          {errorMessage && (
-            <p className="error-message input-container">{errorMessage}</p>
-          )}
           <div className="input-container">
             <label>Email</label>
             <input
@@ -108,40 +151,21 @@ function ForgetPassword() {
         </form>
       </div>
       <Footer />
+      {messageModalOpen && (
+        <MessageModal
+          message={message}
+          open={messageModalOpen}
+          handleClose={handleMessageModalClose}
+          messageType={messageType}
+        />
+      )}
       {isModalOTPOpen && (
-        <div className="modal">
-          <div className="modal-content">
-            <span className="close" onClick={closeModalOTP}>
-              &times;
-            </span>
-            <form
-              className="container"
-              component="form"
-              onSubmit={handleCheckOTP}
-            >
-              {errorMessage && (
-                <p className="error-message input-container">{errorMessage}</p>
-              )}
-              <div className="input-container">
-                <label>Email</label>
-                <input value={email} type="text" placeholder="Email" readOnly />
-              </div>
-              <div className="input-container">
-                <label>Nhập OTP</label>
-                <input
-                  value={otp}
-                  onChange={(e) => setOtp(e.target.value)}
-                  type="text"
-                  placeholder="OTP"
-                />
-              </div>
-
-              <button type="submit" className="login-btn-2">
-                Nhận Mật Khẩu Mới
-              </button>
-            </form>
-          </div>
-        </div>
+        <FormModal
+          handleClose={handleFormModalClose}
+          open={isModalOTPOpen}
+          formData={checkOTPFormData}
+          onSubmit={handleCheckOTP}
+        />
       )}
     </div>
   );

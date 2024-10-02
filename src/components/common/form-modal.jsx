@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Dialog,
   DialogActions,
@@ -9,25 +9,7 @@ import {
   Slide,
 } from "@mui/material";
 
-const FormModal = ({ open, handleClose, onSubmit }) => {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
-  // Handle form input change
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    onSubmit(formData); // Call the parent function to submit the data
-    handleClose(); // Close the modal after submission
-  };
-
+const FormModal = ({ open, handleClose, onSubmit, formData }) => {
   return (
     <Dialog
       open={open}
@@ -51,37 +33,23 @@ const FormModal = ({ open, handleClose, onSubmit }) => {
       }}
     >
       <DialogTitle sx={{ textAlign: "center", fontWeight: "bold" }}>
-        Submit Your Request
+        {formData.title}
       </DialogTitle>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={onSubmit}>
         <DialogContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-          <TextField
-            label="Name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            fullWidth
-          />
-          <TextField
-            label="Email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            type="email"
-            fullWidth
-          />
-          <TextField
-            label="Message"
-            name="message"
-            value={formData.message}
-            onChange={handleChange}
-            required
-            multiline
-            rows={4}
-            fullWidth
-          />
+        {formData.fields.map((field, index) => (
+            <TextField
+              key={index}
+              label={field.label}
+              type={field.type || "text"}
+              name={field.name}
+              fullWidth
+              margin="normal"
+              required={field.required || false}
+              onChange={field.onChange}
+              disabled={field.disable || false}
+            />
+          ))}
         </DialogContent>
         <DialogActions sx={{ justifyContent: "center", padding: "16px" }}>
           <Button
@@ -89,14 +57,14 @@ const FormModal = ({ open, handleClose, onSubmit }) => {
             variant="outlined"
             sx={{ marginRight: 2 }}
           >
-            Cancel
+            Hủy
           </Button>
           <Button
             type="submit"
             variant="contained"
             sx={{ backgroundColor: "green", color: "white" }}
           >
-            Submit
+            {formData.submitText}
           </Button>
         </DialogActions>
       </form>

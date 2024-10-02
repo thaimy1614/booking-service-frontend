@@ -19,6 +19,7 @@ const MessageModal = ({ message, open, handleClose, messageType }) => {
       TransitionComponent={Grow}
       transitionDuration={500}
       sx={{
+        zIndex: 2000,
         "& .MuiDialog-paper": {
           borderRadius: "16px", // Rounded corners
           padding: "16px",
