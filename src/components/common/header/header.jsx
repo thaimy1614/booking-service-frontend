@@ -12,16 +12,29 @@ export const Header = () => {
   useEffect(() => {
     const token = getToken();
 
-    if (token) {
-      const userInfo = getUserInfo();
-      if (userInfo) {
-        var name = JSON.parse(getUserInfo()).name;
-        name = name.split(" ").pop();
+    const updateUserName = () => {
+      if (token) {
+        const userInfo = getUserInfo();
+        if (userInfo) {
+          var name = JSON.parse(userInfo).name;
+          name = name.split(" ").pop(); // Show last name
+        }
+        setNavLink(name);
+      } else {
+        setNavLink("Đăng Nhập");
       }
-      setNavLink(name);
-    } else {
-      setNavLink("Đăng Nhập");
-    }
+    };
+
+    // Call the function initially to set the name on load
+    updateUserName();
+
+    // Add an event listener to listen for changes in local storage
+    window.addEventListener("storage", updateUserName);
+
+    // Cleanup the event listener when the component is unmounted
+    return () => {
+      window.removeEventListener("storage", updateUserName);
+    };
   }, []);
 
   const handleMouseEnter = () => {
@@ -43,17 +56,40 @@ export const Header = () => {
         <img src="/assets/img/logo.png" alt="Logo" />
       </NavLink>
       <nav className="nav-menu">
-        <NavLink to="/service" className={({ isActive }) => (isActive ? "active-link" : "")}>Dịch Vụ</NavLink>
-        <NavLink to="/news" className={({ isActive }) => (isActive ? "active-link" : "")}>Tin Tức</NavLink>
-        <NavLink to="/about" className={({ isActive }) => (isActive ? "active-link" : "")}>Về Chúng Tôi</NavLink>
-        <NavLink to="/contact" className={({ isActive }) => (isActive ? "active-link" : "")}>Liên Hệ</NavLink>
+        <NavLink
+          to="/service"
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          Dịch Vụ
+        </NavLink>
+        <NavLink
+          to="/news"
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          Tin Tức
+        </NavLink>
+        <NavLink
+          to="/about"
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          Về Chúng Tôi
+        </NavLink>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) => (isActive ? "active-link" : "")}
+        >
+          Liên Hệ
+        </NavLink>
       </nav>
       <div
         className="user-menu"
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
-        <NavLink to={navLink !== "Đăng Nhập" ? "#" : "/login"} className="login-btn">
+        <NavLink
+          to={navLink !== "Đăng Nhập" ? "#" : "/login"}
+          className="login-btn"
+        >
           {navLink}
         </NavLink>
 

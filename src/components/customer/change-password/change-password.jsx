@@ -5,6 +5,7 @@ import { Footer } from "../../common/footer/footer";
 import { useNavigate } from "react-router-dom";
 import { getToken } from "../../../services/localStorageService";
 import { useEffect } from "react";
+import MessageModal from "../../common/message-modal";
 
 function ChangePassword() {
   const navigate = useNavigate();
@@ -70,10 +71,22 @@ function ChangePassword() {
       });
   };
 
+  const handleMessageModalClose = () => {
+    setMessageModal(false);
+  }
+
   return (
     <div className="app">
       <div className="login-page">
         <Header />
+        {messageModalOpen && (
+        <MessageModal
+          message={message}
+          open={messageModalOpen}
+          handleClose={handleMessageModalClose}
+          messageType={messageType}
+        />
+      )}
         <form className="container" component="form" onSubmit={handleSubmit}>
           <div className="input-container">
             <label>Mật khẩu hiện tại</label>

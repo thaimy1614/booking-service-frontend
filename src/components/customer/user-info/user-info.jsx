@@ -2,24 +2,33 @@ import React, { useEffect, useState } from "react";
 import "./user-info.css";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
-import { getToken, getUserInfo } from "../../../services/localStorageService";
+import {
+  getToken,
+  getUserInfo,
+  removeUserInfo,
+} from "../../../services/localStorageService";
 import { NavLink, useNavigate } from "react-router-dom";
 import { fetchUserInfo } from "../login/login";
+import MessageModal from "../../common/message-modal";
 
 function UserInfo() {
   const navigate = useNavigate();
+  const [messageModalOpen, setMessageModal] = useState(false);
+  const [messageType, setMessageType] = useState(false);
+  const [message, setMessage] = useState("Đổi thông tin tài khoản thành công!");
 
   useEffect(() => {
     const accessToken = getToken();
 
-    if (accessToken==null) {
+    if (accessToken == null) {
       navigate("/login");
     } else {
-      const userInfo = getUserInfo();
+      var userInfo = getUserInfo();
 
       if (!userInfo) {
         fetchUserInfo();
       }
+      userInfo = getUserInfo();
       var info = JSON.parse(userInfo);
       setName(info.name);
       setEmail(info.email);
@@ -33,57 +42,60 @@ function UserInfo() {
   const [phone, setPhone] = useState("");
   const [address, setAddress] = useState("");
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     fetch("http://localhost:8080/api/identity/signup", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json", // Set the content type to JSON
-//       },
-//       body: JSON.stringify({
-//         email: email,
-//         password: password,
-//         name: name,
-//         username: username,
-//         address: address,
-//         phone: phone,
-//       }),
-//     })
-//       .then((response) => {
-//         return response.json();
-//       })
-//       .then((data) => {
-//         if (data.result.success != null) {
-//           navigate("/login");
-//         }
-//       })
-//       .catch((error) => {
-//         console.log(error);
-//       });
-//   };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    fetch(process.env.REACT_APP_API + "/user/profile", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${getToken()}`,
+      },
+      body: JSON.stringify({
+        email: email,
+        name: name,
+        address: address,
+        phone: phone,
+      }),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        if (data.result != null) {
+          setName(data.result.name);
+          setAddress(data.result.address);
+          setEmail(data.result.email);
+          setPhone(data.result.phone);
+          setMessageType(true);
+          setMessage("Đổi thông tin cá nhân thành công!");
+          localStorage.setItem("userInfo", JSON.stringify(data.result));
+
+          // Trigger event for header update
+          window.dispatchEvent(new Event("storage"));
+          setMessageModal(true);
+        } else {
+          setMessageType(false);
+          setMessage("Đổi thông tin cá nhân thất bại!");
+          setMessageModal(true);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setMessageType(false);
+        setMessage("Đã có lỗi xảy ra, vui lòng thử lại!");
+        setMessageModal(true);
+      });
+  };
+
+  const handleMessageModalClose = () => {
+    setMessageModal(false);
+  };
 
   return (
     <div className="app">
       <div className="login-page">
         <Header />
-        <form component="form" className="container">
-          <p
-            id="success"
-            className="message"
-            style={{ color: "greenyellow" }}
-            hidden
-          >
-            Vui lòng kiểm tra email của bạn để xác nhận!
-          </p>
-          <p id="fail" className="message" style={{ color: "red" }} hidden>
-            Tài khoản đã tồn tại!
-          </p>
-
-          {/* <div className="input-container">
-            <label>Confirm Password</label>
-            <input  type="password" placeholder="Confirm Password" required />
-          </div> */}
-
+        <form onSubmit={handleSubmit} component="form" className="container">
           <div className="input-container">
             <label>Họ và tên</label>
             <input
@@ -102,6 +114,7 @@ function UserInfo() {
               type="text"
               placeholder="Email"
               required
+              disabled
             />
           </div>
           <div className="input-container">
@@ -131,6 +144,14 @@ function UserInfo() {
           </NavLink>
         </form>
       </div>
+      {messageModalOpen && (
+        <MessageModal
+          message={message}
+          open={messageModalOpen}
+          handleClose={handleMessageModalClose}
+          messageType={messageType}
+        />
+      )}
       <Footer />
     </div>
   );

@@ -39,6 +39,7 @@ const FormModal = ({ open, handleClose, onSubmit, formData }) => {
         <DialogContent sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
         {formData.fields.map((field, index) => (
             <TextField
+              value={field.value}
               key={index}
               label={field.label}
               type={field.type || "text"}

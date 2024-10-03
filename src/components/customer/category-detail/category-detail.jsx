@@ -43,17 +43,6 @@ const PricingCard = ({ title, items }) => {
   );
 };
 
-export const Certificates = () => {
-  return (
-    <section className="certificates">
-      <h2>Chứng Chỉ</h2>
-      <div>
-        <img src="/assets/img/certificate.png" alt="Certificate" />
-      </div>
-    </section>
-  );
-};
-
 const CategoryDetail = () => {
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -61,17 +50,17 @@ const CategoryDetail = () => {
   const fetchServices = async () => {
     setLoading(true);
     try {
-      const response = await fetch(process.env.REACT_APP_API + "/category", {
+      const response = await fetch(process.env.REACT_APP_API + "/category/", {
         method: "GET",
       });
       const data = await response.json();
+      setLoading(false);
       if (response.ok) {
         setService(data.result);
         console.log(data.result)
         return data.result;
       } else {
         console.error("Failed to fetch services");
-        setLoading(false);
       }
     } catch (error) {
       console.error("Error fetching services:", error);

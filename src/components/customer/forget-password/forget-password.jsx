@@ -21,6 +21,7 @@ function ForgetPassword() {
     title: "Nhập OTP",
     fields: [
       {
+        value: email,
         label: "Email",
         name: "email",
         required: true,
@@ -28,6 +29,7 @@ function ForgetPassword() {
         disable: true,
       },
       {
+        value: otp,
         label: "OTP",
         name: "OTP",
         type: "text",
