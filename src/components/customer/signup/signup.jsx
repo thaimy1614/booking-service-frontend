@@ -16,7 +16,6 @@ function Signup() {
     "SIGNUP SUCCESSFULLY, PLEASE CHECK YOUR EMAIL TO VERIFY ACCOUNT"
   );
   const [failMessage, setFailMessage] = useState("ACCOUNT ALREADY EXISTS");
-  const [initialLoading, setInitialLoading] = useState(true);
 
   useEffect(() => {
     const accessToken = getToken();
@@ -24,7 +23,6 @@ function Signup() {
     if (accessToken) {
       navigate("/");
     }
-    setInitialLoading(false);
   }, [navigate]);
 
   const [username, setUsername] = useState("");
@@ -78,9 +76,6 @@ function Signup() {
   const handleClose = () => {
     setModalOpen(false);
   };
-  if (initialLoading) {
-    return null;
-  }
   return (
     <div className="app">
       <div className="login-page">
