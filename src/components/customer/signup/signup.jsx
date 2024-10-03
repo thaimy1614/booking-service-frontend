@@ -12,7 +12,7 @@ function Signup() {
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
   const [messageType, setMessageType] = useState(true);
-  const [successMessage] = useState(
+  const [successMessage, setSuccessMessage] = useState(
     "Đăng ký thành công, vui lòng kiểm tra email để xác thực tài khoản!"
   );
   const [failMessage, setFailMessage] = useState("Tài khoản đã tồn tại!");
@@ -53,17 +53,19 @@ function Signup() {
         return response.json();
       })
       .then((data) => {
+        console.log(data)
         setLoading(false);
-        if (data.result.success != null) {
-          if (data.result.success) {
+        switch(data.code){
+          case 1000:
             setMessageType(true);
-          } else {
+            setSuccessMessage("Đăng ký thành công, vui lòng kiểm tra email để xác thực tài khoản!");
+            setModalOpen(true);
+            break;
+          default:
             setMessageType(false);
-          }
-          setModalOpen(true);
-        } else {
-          setMessageType(false);
-          setModalOpen(true);
+            setFailMessage("Username hoặc Email đã tồn tại!");
+            setModalOpen(true);
+            break;
         }
       })
       .catch((error) => {

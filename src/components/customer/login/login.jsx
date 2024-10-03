@@ -41,6 +41,7 @@ function App() {
   const [failMessage, setFailMessage] = useState("INCORRECT USERNAME OR PASSWORD!");
 
   const handleClick = () => {
+    setModalOpen(false);
     const callbackUrl = OAuthConfig.redirectUri;
     const authUrl = OAuthConfig.authUri;
     const googleClientId = OAuthConfig.clientId;
@@ -66,6 +67,7 @@ function App() {
   const [password, setPassword] = useState("");
 
   const handleSubmit = async (event) => {
+    setModalOpen(false);
     event.preventDefault();
     setLoading(true);
     try {
@@ -84,6 +86,22 @@ function App() {
       );
       setLoading(false);
       const data = await response.json();
+      switch(data.code){
+        case 1005:
+          setFailMessage("Tài khoản không tồn tại!");
+          setModalOpen(true);
+          return;
+        case 1008:
+          setFailMessage("Tên đăng nhập hoặc mật khẩu không chính xác!");
+          setModalOpen(true);
+          return;
+        case 1016:
+          setFailMessage("Tài khoản chưa được xác thực, vui lòng kiểm tra email!");
+          setModalOpen(true);
+          return;
+        default:
+          break;
+      }
       if (response.ok) {
         console.log("Response body:", data);
         setToken(data.result.token); // Save the token to local storage
@@ -105,7 +123,7 @@ function App() {
     } catch (error) {
       setLoading(false);
       console.error("Login error:", error);
-      setFailMessage("Something went wrong, please try again!")
+      setFailMessage("Đã có lỗi xảy ra, vui lòng thử lại!")
       setModalOpen(true);
     }
   };
@@ -143,6 +161,7 @@ function App() {
               onChange={(e) => setUsername(e.target.value)}
               type="text"
               placeholder="Email hoặc Tên đăng nhập"
+              required
             />
           </div>
           <div className="input-container">
@@ -151,7 +170,8 @@ function App() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              placeholder="mật khẩu"
+              placeholder="Mật khẩu"
+              required
             />
           </div>
           <div className="options">

@@ -4,8 +4,7 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import {
   getToken,
-  getUserInfo,
-  removeUserInfo,
+  getUserInfo
 } from "../../../services/localStorageService";
 import { NavLink, useNavigate } from "react-router-dom";
 import { fetchUserInfo } from "../login/login";

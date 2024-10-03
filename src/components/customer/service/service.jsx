@@ -3,22 +3,29 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./service.css";
 import Loading from "../../common/loading";
+import { Navigate, useNavigate } from "react-router-dom";
 
-const MainContent = ({services}) => {
+const MainContent = ({ services, onClick }) => {
   return (
     <main>
       <section className="main-section">
         <h1>DỊCH VỤ CỦA CHÚNG TÔI</h1>
         <p>
-        Dưới đây là các dịch vụ của chúng tôi, chúng tôi sẽ tư vấn thêm nếu bạn cần biết đầy đủ chính sách và thông tin.
+          Dưới đây là các dịch vụ của chúng tôi, chúng tôi sẽ tư vấn thêm nếu
+          bạn cần biết đầy đủ chính sách và thông tin.
         </p>
         <button className="main-btn">Tư vấn ngay</button>
       </section>
       <section className="pricing-section">
         <div className="pricing-cards">
-        {services && services.length > 0 ? (
+          {services && services.length > 0 ? (
             services.map((category) => (
-              <PricingCard title={category.name} items={category.services} />
+              <PricingCard
+                id={category.id}
+                title={category.name}
+                items={category.services}
+                onClick={onClick}
+              />
             ))
           ) : (
             <p>No services available.</p>
@@ -29,7 +36,10 @@ const MainContent = ({services}) => {
   );
 };
 
-const PricingCard = ({ title, items }) => {
+
+
+
+const PricingCard = ({ id, title, items, onClick }) => {
   return (
     <div className="pricing-card">
       <h3>{title}</h3>
@@ -38,7 +48,9 @@ const PricingCard = ({ title, items }) => {
           <li key={item.id}>{item.name}</li>
         ))}
       </ul>
-      <button className="pricing-btn">XEM CHI TIẾT</button>
+      <button onClick={() => onClick(id)} className="pricing-btn">
+        XEM CHI TIẾT
+      </button>
     </div>
   );
 };
@@ -57,6 +69,7 @@ export const Certificates = () => {
 const Service = () => {
   const [service, setService] = useState([]);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const fetchServices = async () => {
     setLoading(true);
@@ -68,7 +81,7 @@ const Service = () => {
       setLoading(false);
       if (response.ok) {
         setService(data.result);
-        console.log(data.result)
+        console.log(data.result);
         return data.result;
       } else {
         console.error("Failed to fetch services");
@@ -76,7 +89,6 @@ const Service = () => {
     } catch (error) {
       console.error("Error fetching services:", error);
       setLoading(false);
-
     }
   };
 
@@ -84,11 +96,15 @@ const Service = () => {
     fetchServices();
   }, []);
 
+  const handleClickCategory = (id) => {
+    navigate("/category/"+id)
+  };
+
   return (
     <div className="app">
       <Header />
       {loading && <Loading />}
-      <MainContent services={service} />
+      <MainContent services={service} onClick={handleClickCategory} />
       <Footer />
     </div>
   );
