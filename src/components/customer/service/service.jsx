@@ -65,13 +65,13 @@ const Service = () => {
         method: "GET",
       });
       const data = await response.json();
+      setLoading(false);
       if (response.ok) {
         setService(data.result);
         console.log(data.result)
         return data.result;
       } else {
         console.error("Failed to fetch services");
-        setLoading(false);
       }
     } catch (error) {
       console.error("Error fetching services:", error);

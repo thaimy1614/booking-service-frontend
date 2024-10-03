@@ -12,7 +12,9 @@ function ChangePassword() {
   const [password, setPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [reEnter, setReEnter] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
+  const [messageModalOpen, setMessageModal] = useState(false);
+  const [messageType, setMessageType] = useState(false);
+  const [message, setMessage] = useState("Đổi mật khẩu thành công!");
 
   const accessToken = getToken();
 
@@ -28,10 +30,10 @@ function ChangePassword() {
     event.preventDefault();
 
     if (newPassword !== reEnter) {
-      setErrorMessage("Mật khẩu mới chưa trùng khớp"); // Set error message
+      setMessageType(false);
+      setMessage("Mật khẩu mới không trùng khớp!");
+      setMessageModal(true);
       return;
-    } else {
-      setErrorMessage(""); // Clear error message if passwords match
     }
 
     fetch(process.env.REACT_APP_API + "/identity/change-password", {
@@ -51,15 +53,20 @@ function ChangePassword() {
       .then((data) => {
         console.log("Response body:", data);
         if (data.result === true) {
-          setErrorMessage("Đổi mật khẩu thành công!");
+          setMessageType(true);
+          setMessage("Đổi mật khẩu thành công!");
+          setMessageModal(true);
         } else {
-          setErrorMessage(
-            "Vui lòng thử lại với mật khẩu chính xác"
-          );
+          setMessageType(false);
+          setMessage("Mật khẩu không chính xác!");
+          setMessageModal(true);
         }
       })
       .catch((error) => {
         console.log(error);
+        setMessageType(false);
+          setMessage("Đã có lỗi xảy ra, vui lòng thử lại!");
+          setMessageModal(true);
       });
   };
 
@@ -68,9 +75,6 @@ function ChangePassword() {
       <div className="login-page">
         <Header />
         <form className="container" component="form" onSubmit={handleSubmit}>
-          {errorMessage && (
-            <p className="error-message input-container">{errorMessage}</p>
-          )}
           <div className="input-container">
             <label>Mật khẩu hiện tại</label>
             <input
