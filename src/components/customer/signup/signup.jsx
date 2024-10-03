@@ -11,7 +11,7 @@ function Signup() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [messageType, setMessageType] = useState("success");
+  const [messageType, setMessageType] = useState(true);
   const [successMessage] = useState(
     "SIGNUP SUCCESSFULLY, PLEASE CHECK YOUR EMAIL TO VERIFY ACCOUNT"
   );
@@ -56,9 +56,9 @@ function Signup() {
         setLoading(false);
         if (data.result.success != null) {
           if (data.result.success) {
-            setMessageType("success");
+            setMessageType(true);
           } else {
-            setMessageType("fail");
+            setMessageType(false);
           }
           setModalOpen(true);
         }
@@ -175,7 +175,7 @@ function Signup() {
       </div>
       {modalOpen && (
         <MessageModal
-          message={messageType === "success" ? successMessage : failMessage}
+          message={messageType ? successMessage : failMessage}
           open={modalOpen}
           handleClose={handleClose}
           messageType={messageType}

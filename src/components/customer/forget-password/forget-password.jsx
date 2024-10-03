@@ -12,7 +12,7 @@ function ForgetPassword() {
   const [isModalOTPOpen, setIsModalOTPOpen] = useState(false);
   const [loading, setLoading] = useState(false);
   const [messageModalOpen, setMessageModal] = useState(false);
-  const [messageType, setMessageType] = useState("fail");
+  const [messageType, setMessageType] = useState(false);
   const [message, setMessage] = useState(
     "Vui lòng kiểm tra email, sau đó nhập OTP"
   );

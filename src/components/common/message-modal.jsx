@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 const MessageModal = ({ message, open, handleClose, messageType }) => {
-  const isSuccess = messageType === "success";
+  const isSuccess = messageType;
 
   return (
     <Dialog

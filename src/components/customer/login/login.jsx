@@ -37,7 +37,7 @@ function App() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
-  const [messageType] = useState("fail");
+  const [messageType] = useState(false);
   const [failMessage, setFailMessage] = useState("INCORRECT USERNAME OR PASSWORD!");
 
   const handleClick = () => {

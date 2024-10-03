@@ -11,6 +11,8 @@ import ChangePassword from "./components/customer/change-password/change-passwor
 import ForgetPassword from "./components/customer/forget-password/forget-password";
 import UserInfo from "./components/customer/user-info/user-info";
 import Contact from "./components/customer/contact/contact";
+import CategoryDetail from "./components/customer/category-detail/category-detail";
+import ServiceDetail from "./components/customer/service-detail/service-detail";
 
 const App = () => {
   return (
@@ -28,6 +30,8 @@ const App = () => {
         <Route path="/user/change-password" element={<ChangePassword />} />
         <Route path="/user/forget-password" element={<ForgetPassword />} />
         <Route path="/user/my-info" element={<UserInfo />} />
+        <Route path="/category/:categoryName" element={<CategoryDetail />} />
+        <Route path="/service/:serviceName" element={<ServiceDetail />} />
       </Routes>
     </div>
   );
