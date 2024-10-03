@@ -13,9 +13,9 @@ function Signup() {
   const [modalOpen, setModalOpen] = useState(false);
   const [messageType, setMessageType] = useState(true);
   const [successMessage] = useState(
-    "SIGNUP SUCCESSFULLY, PLEASE CHECK YOUR EMAIL TO VERIFY ACCOUNT"
+    "Đăng ký thành công, vui lòng kiểm tra email để xác thực tài khoản!"
   );
-  const [failMessage, setFailMessage] = useState("ACCOUNT ALREADY EXISTS");
+  const [failMessage, setFailMessage] = useState("Tài khoản đã tồn tại!");
 
   useEffect(() => {
     const accessToken = getToken();
@@ -61,12 +61,15 @@ function Signup() {
             setMessageType(false);
           }
           setModalOpen(true);
+        } else {
+          setMessageType(false);
+          setModalOpen(true);
         }
       })
       .catch((error) => {
         setLoading(false);
         setMessageType(false);
-        setFailMessage("Something went wrong, please try again!");
+        setFailMessage("Đã có lỗi xảy ra, vui lòng thử lại");
         setModalOpen(true);
         console.log(error);
       });
@@ -88,39 +91,26 @@ function Signup() {
                 selectedUser === "Customer" ? "active" : ""
               }`}
             >
-              Sign Up
+              Đăng Ký
             </div>
           </div>
-
-          <p
-            id="success"
-            className="message"
-            style={{ color: "greenyellow" }}
-            hidden
-          >
-            Please check your email to verify account!
-          </p>
-          <p id="fail" className="message" style={{ color: "red" }} hidden>
-            Account already exists!
-          </p>
-
           <div className="input-container">
-            <label>Username</label>
+            <label>Tên đăng nhập</label>
             <input
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               type="text"
-              placeholder="Username"
+              placeholder="Tên đăng nhập"
               required
             />
           </div>
           <div className="input-container">
-            <label>Password</label>
+            <label>Mật khẩu</label>
             <input
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              placeholder="Password"
+              placeholder="Mật khẩu"
               required
             />
           </div>
@@ -130,12 +120,12 @@ function Signup() {
           </div> */}
 
           <div className="input-container">
-            <label>Full Name</label>
+            <label>Họ và tên</label>
             <input
               value={name}
               onChange={(e) => setName(e.target.value)}
               type="text"
-              placeholder="Full Name"
+              placeholder="Họ và tên"
               required
             />
           </div>
@@ -150,26 +140,26 @@ function Signup() {
             />
           </div>
           <div className="input-container">
-            <label>Address</label>
+            <label>Địa chỉ</label>
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}
               type="text"
-              placeholder="Address"
+              placeholder="Địa chỉ"
             />
           </div>
           <div className="input-container">
-            <label>Phone Number</label>
+            <label>Số điện thoại</label>
             <input
               value={phone}
               onChange={(e) => setPhone(e.target.value)}
               type="text"
-              placeholder="Phone Number"
+              placeholder="Số điện thoại"
             />
           </div>
 
           <button type="submit" className="login-btn-2">
-            SIGN UP
+            Đăng Ký
           </button>
         </form>
       </div>
