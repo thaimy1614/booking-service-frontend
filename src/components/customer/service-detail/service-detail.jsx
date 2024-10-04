@@ -26,7 +26,7 @@ const MainContent = ({ service }) => {
         ))}
       </section>
       <section className="main-section">
-        <Button className="main-btn-service">
+        <Button onClick={()=>{window.location.href="/send-request"}} className="main-btn-service">
           Tư Vấn Ngay{" "}
           <FontAwesomeIcon icon={faArrowUpRightDots} size="1x" color="black" />
         </Button>

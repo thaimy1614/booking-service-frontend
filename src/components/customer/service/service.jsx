@@ -14,7 +14,7 @@ const MainContent = ({ services, onClick }) => {
           Dưới đây là các dịch vụ của chúng tôi, chúng tôi sẽ tư vấn thêm nếu
           bạn cần biết đầy đủ chính sách và thông tin.
         </p>
-        <button className="main-btn">Tư vấn ngay</button>
+        <button onClick={()=>{window.location.href="/send-request"}} className="main-btn">Tư vấn ngay</button>
       </section>
       <section className="pricing-section">
         <div className="pricing-cards">

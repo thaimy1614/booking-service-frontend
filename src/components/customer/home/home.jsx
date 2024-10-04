@@ -26,7 +26,7 @@ const MainSection = () => {
           <img src="/assets/img/big-logo.png" alt="LOGO"></img>
         </h1>
         <p>Xây dựng đội ngũ chuyên gia am hiểu về bảo mật thông tin</p>
-        <button className="main-btn">
+        <button onClick={()=>{window.location.href="/send-request"}} className="main-btn">
           Bắt Đầu{" "}
           <FontAwesomeIcon icon={faArrowUpRightDots} size="1x" color="white" />
         </button>
