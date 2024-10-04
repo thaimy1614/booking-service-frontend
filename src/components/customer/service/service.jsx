@@ -60,7 +60,7 @@ export const Certificates = () => {
     <section className="certificates">
       <h2>Chứng Chỉ</h2>
       <div>
-        <img src="/assets/img/certificate.png" alt="Certificate" />
+        <img src="/assets/img/about1.png" alt="Certificate" />
       </div>
     </section>
   );
