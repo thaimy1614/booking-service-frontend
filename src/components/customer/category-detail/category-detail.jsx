@@ -3,22 +3,24 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./category-detail.css";
 import Loading from "../../common/loading";
+import { useParams } from "react-router-dom";
 
-const MainContent = ({services}) => {
+const MainContent = ({ category }) => {
   return (
     <main>
       <section className="main-section">
-        <h1>DỊCH VỤ CỦA CHÚNG TÔI</h1>
+        <h1>{category.name}</h1>
         <p>
-        Dưới đây là các dịch vụ của chúng tôi, chúng tôi sẽ tư vấn thêm nếu bạn cần biết đầy đủ chính sách và thông tin.
+          {category.description}
         </p>
-        <button className="main-btn">Tư vấn ngay</button>
+        <h1>{category.name}</h1>
       </section>
       <section className="pricing-section">
+        <h1>Chi tiết dịch vụ</h1>
         <div className="pricing-cards">
-        {services && services.length > 0 ? (
-            services.map((category) => (
-              <PricingCard title={category.name} items={category.services} />
+          {category && category.length > 0 ? (
+            category.services.map((service) => (
+              <PricingCard title={service.name} items={service.price} />
             ))
           ) : (
             <p>No services available.</p>
@@ -29,35 +31,37 @@ const MainContent = ({services}) => {
   );
 };
 
-const PricingCard = ({ title, items }) => {
+const PricingCard = ({ title, price }) => {
   return (
     <div className="pricing-card">
-      <h3>{title}</h3>
-      <ul>
-        {items.map((item, index) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
+      <h3>
+        {title} + {price}
+      </h3>
+
       <button className="pricing-btn">XEM CHI TIẾT</button>
     </div>
   );
 };
 
 const CategoryDetail = () => {
-  const [service, setService] = useState([]);
+  const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
-  const fetchServices = async () => {
+  const fetchCategoryById = async () => {
     setLoading(true);
     try {
-      const response = await fetch(process.env.REACT_APP_API + "/category/", {
-        method: "GET",
-      });
+      const response = await fetch(
+        process.env.REACT_APP_API + `/category/${id}`,
+        {
+          method: "GET",
+        }
+      );
       const data = await response.json();
       setLoading(false);
       if (response.ok) {
-        setService(data.result);
-        console.log(data.result)
+        setCategory(data.result);
+        console.log(data.result);
         return data.result;
       } else {
         console.error("Failed to fetch services");
@@ -65,19 +69,18 @@ const CategoryDetail = () => {
     } catch (error) {
       console.error("Error fetching services:", error);
       setLoading(false);
-
     }
   };
 
   useEffect(() => {
-    fetchServices();
+    fetchCategoryById();
   }, []);
 
   return (
     <div className="app">
       <Header />
       {loading && <Loading />}
-      <MainContent services={service} />
+      <MainContent category={category} />
       <Footer />
     </div>
   );

@@ -34,10 +34,9 @@ nav {
   text-decoration: none;
 }
 
-/* .nav-menu .active-link{
-  border: 1px 2px "red";
-} */
-
+.active-link {
+  color: gray !important;
+}
 .login-btn {
   background-color: #c9ff67;
   border: none;

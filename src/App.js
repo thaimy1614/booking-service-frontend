@@ -30,8 +30,8 @@ const App = () => {
         <Route path="/user/change-password" element={<ChangePassword />} />
         <Route path="/user/forget-password" element={<ForgetPassword />} />
         <Route path="/user/my-info" element={<UserInfo />} />
-        <Route path="/category/:categoryName" element={<CategoryDetail />} />
-        <Route path="/service/:serviceName" element={<ServiceDetail />} />
+        <Route path="/category/:id" element={<CategoryDetail />} />
+        <Route path="/service/:id" element={<ServiceDetail />} />
       </Routes>
     </div>
   );
