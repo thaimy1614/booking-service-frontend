@@ -14,15 +14,13 @@ const ImageWithText = ({ imageUrl, hoverText, className }) => {
 
 const Project = () => {
   return (
-    <section className="project">
-      <h2>Dự Án Của Chúng Tôi</h2>
-      <div>
-        <img
-          className="about-img-1"
-          src="/assets/img/about1.png"
-          alt="IMG"
-        ></img>
-      </div>
+    <section className="main-section">
+      <h1>Giới thiệu</h1>
+      <p>
+      Bạn đang tìm cách bảo vệ dữ liệu cá nhân, doanh nghiệp? Chúng tôi cung cấp các giải pháp bảo mật toàn diện, từ tư vấn an toàn thông tin đến các dịch vụ kiểm tra lỗ hổng, giúp bạn yên tâm hơn khi sử dụng internet.
+      </p>
+      <br />
+      <p>S-Service xây dựng đội ngũ cán bộ quản lý điều hành tài giỏi, có bản lĩnh. S-Service có đội ngũ chuyên gia với nhiều năm kinh nghiệm thực tiễn.</p>
     </section>
   );
 };

@@ -17,6 +17,7 @@ export const Footer = () => {
             <br></br>
             <a href="https://www.facebook.com/profile.php?id=61566307315716" target="_blank" rel="noreferrer noopener"><img src="/assets/img/facebook.png" alt="Facebook" /></a>
             <a href="https://mail.google.com/mail/u/1/?view=cm&fs=1&to=sservice.ia@gmail.com&tf=1" target="_blank" rel="noreferrer noopener"><img src="/assets/img/gmail.png" alt="Gmail" /></a>
+            <a href="https://www.instagram.com/sservice.it?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noreferrer noopener"><img src="/assets/img/instagram.png" alt="Instagram" /></a>
           </div>
         </div>
         <div className="footer-column">

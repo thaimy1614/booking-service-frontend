@@ -13,6 +13,7 @@ import UserInfo from "./components/customer/user-info/user-info";
 import Contact from "./components/customer/contact/contact";
 import CategoryDetail from "./components/customer/category-detail/category-detail";
 import ServiceDetail from "./components/customer/service-detail/service-detail";
+import Request from "./components/customer/request/request";
 
 const App = () => {
   return (
@@ -32,6 +33,7 @@ const App = () => {
         <Route path="/user/my-info" element={<UserInfo />} />
         <Route path="/category/:id" element={<CategoryDetail />} />
         <Route path="/service/:id" element={<ServiceDetail />} />
+        <Route path="/send-request" element={<Request />} />
       </Routes>
     </div>
   );
