@@ -3,7 +3,7 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./service.css";
 import Loading from "../../common/loading";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const MainContent = ({ services, onClick }) => {
   return (

@@ -3,9 +3,14 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./category-detail.css";
 import Loading from "../../common/loading";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightDots } from "@fortawesome/free-solid-svg-icons";
 
 const MainContent = ({ category }) => {
+  if (!category) {
+    return <p>Loading category details...</p>; // Or a loading spinner
+  }
   return (
     <main>
       <section className="main-section">
@@ -13,38 +18,28 @@ const MainContent = ({ category }) => {
         <p>
           {category.description}
         </p>
-        <h1>{category.name}</h1>
       </section>
-      <section className="pricing-section">
-        <h1>Chi tiết dịch vụ</h1>
-        <div className="pricing-cards">
-          {category && category.length > 0 ? (
-            category.services.map((service) => (
-              <PricingCard title={service.name} items={service.price} />
-            ))
-          ) : (
-            <p>No services available.</p>
-          )}
-        </div>
+      <section className="main-section">
+        <h1>Lợi Ích Của {category.name}</h1>
+        
+        {category.benefits.map((benefit, index) => (
+          <p key={index}>- {benefit}</p>
+        ))}
+
+      </section>
+      <section className="main-section">
+        <h1>Các Dịch Vụ Của {category.name}</h1>
+        {category.services.map((service, index) => (
+          <NavLink to={"/service/"+service.id}  key={index}>- {service.name}  <FontAwesomeIcon icon={faArrowUpRightDots} size="1x" color="white" /></NavLink>
+        ))}
       </section>
     </main>
   );
 };
 
-const PricingCard = ({ title, price }) => {
-  return (
-    <div className="pricing-card">
-      <h3>
-        {title} + {price}
-      </h3>
-
-      <button className="pricing-btn">XEM CHI TIẾT</button>
-    </div>
-  );
-};
 
 const CategoryDetail = () => {
-  const [category, setCategory] = useState([]);
+  const [category, setCategory] = useState(null);
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
 
