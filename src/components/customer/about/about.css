@@ -48,6 +48,7 @@
 
 .hover-text {
     position: absolute;
+    font-size: 30px;
     top: 0;
     left: 0;
     width: 100%;
