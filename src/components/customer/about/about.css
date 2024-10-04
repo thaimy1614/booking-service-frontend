@@ -86,7 +86,28 @@
 }
 
 .service-title {
-    font-size: 96px;
+    font-size: 100px;
     font-weight: 600;
     color: #cfff45;
+}
+.main-section-about {
+    text-align: left;
+    margin: 150px 0;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+}
+
+.main-section-about h1 {
+    font-size: 96px;
+    font-weight: 800;
+    line-height: 1.17;
+    color: #cfff45;
+    width: 800px;
+}
+
+.main-section-about p {
+    font-size: 25px;
+    font-weight: 300;
+    line-height: 1.17;
 }

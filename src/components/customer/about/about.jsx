@@ -14,7 +14,7 @@ const ImageWithText = ({ imageUrl, hoverText, className }) => {
 
 const Project = () => {
   return (
-    <section className="main-section">
+    <section className="main-section-about">
       <h1>Giới thiệu</h1>
       <p>
       Bạn đang tìm cách bảo vệ dữ liệu cá nhân, doanh nghiệp? Chúng tôi cung cấp các giải pháp bảo mật toàn diện, từ tư vấn an toàn thông tin đến các dịch vụ kiểm tra lỗ hổng, giúp bạn yên tâm hơn khi sử dụng internet.
