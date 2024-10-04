@@ -34,6 +34,9 @@
 }
 
 .main-btn-service {
+    display: flex;
+    align-items: center;
+    gap: 12px;
     background-color: #cfff45 !important;
     border: none !important;
     border-radius: 16px !important;
@@ -43,7 +46,6 @@
     color: black !important;
     cursor: pointer !important;
 }
-
 
 .certificates {
     text-align: center;

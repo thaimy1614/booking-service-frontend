@@ -28,7 +28,7 @@ const MainContent = ({ service }) => {
       <section className="main-section">
         <Button className="main-btn-service">
           Tư Vấn Ngay{" "}
-          <FontAwesomeIcon icon={faArrowUpRightDots} size="1x" color="white" />
+          <FontAwesomeIcon icon={faArrowUpRightDots} size="1x" color="black" />
         </Button>
       </section>
     </main>
