@@ -6,17 +6,28 @@ html {
   font-family: "Roboto", sans-serif;
 }
 
-.main-section img {
+.main-section-home {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  margin: 150px 0;
+  width: 1100px;
+}
+
+.main-section-home img {
   width: 500px;
-  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
-  border-radius: 8px;
 }
 
-.main-section h1 {
+.main-section-home p {
   margin-top: 10px;
+  font-size: 36px;
 }
 
-.main-section.non-secu{
+.main-btn{
+  width: 300px !important;
+}
+
+.main-section-home.non-secu {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -32,7 +43,7 @@ html {
   margin-bottom: -200px;
 }
 
-.non-secu-fea{
+.non-secu-fea {
   display: flex;
   flex-direction: row;
   justify-content: space-between;

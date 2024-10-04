@@ -20,8 +20,7 @@ const XEffect = () => {
 
 const MainSection = () => {
   return (
-    <main>
-      <section className="main-section">
+      <section className="main-section-home">
         <h1>
           <img src="/assets/img/big-logo.png" alt="LOGO"></img>
         </h1>
@@ -36,7 +35,6 @@ const MainSection = () => {
           <FontAwesomeIcon icon={faArrowUpRightDots} size="1x" color="white" />
         </button>
       </section>
-    </main>
   );
 };
 

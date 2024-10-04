@@ -99,6 +99,7 @@
 }
 
 .certificates h2 {
+    margin-left: -200px;
     font-size: 96px;
     font-weight: 600;
     color: #cfff45;
