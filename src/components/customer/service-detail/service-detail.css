@@ -1,97 +1,49 @@
 .main-section {
     text-align: left;
     margin: 150px 0;
-    max-width: 800px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
 }
 
 .main-section h1 {
-    font-size: 64px;
+    font-size: 50px;
     font-weight: 800;
     line-height: 1.17;
+    width: 800px;
 }
 
 .main-section p {
-    font-size: 36px;
+    font-size: 30px;
     font-weight: 700;
     line-height: 1.17;
     margin: 24px 0;
 }
-
-.main-btn {
-    background-color: #005aec;
-    border: none;
-    border-radius: 16px;
-    padding: 16px 32px;
-    font-size: 24px;
+.main-section a {
+    font-size: 30px;
     font-weight: 700;
-    color: white;
-    cursor: pointer;
-}
-
-.pricing-section {
-    text-align: left;
-    margin: 100px 0;
-    max-width: 1200px;
-}
-
-.pricing-section h2 {
-    text-align: center;
-    font-size: 36px;
-    font-weight: 800;
-    line-height: 42.19px;
-}
-
-.pricing-cards {
-    display: flex;
-    margin-top: 50px;
-    gap: 5px;
-    flex-wrap: wrap;
-}
-
-.pricing-card {
-    background-color: #061128;
-    border-radius: 24px;
-    padding: 30px;
-    width: 300px;
-    flex: 1 1 30%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.pricing-card h3 {
-    font-size: 40px;
-    font-weight: 800;
-    text-align: center;
-}
-
-.pricing-card p {
-    font-size: 20px;
-    font-weight: 800;
-    margin: 24px 0;
     line-height: 1.17;
+    margin: 24px 0;
+    color: white !important;
+    text-decoration: none;
 }
 
-.pricing-card ul {
-    list-style: circle;
-    padding: 0;
-    margin: 0 0 24px;
-    font-size: 16px;
-    line-height: 20px;
-    margin-left: 20px;
+.main-section a:hover {
+    text-decoration: underline;
+    color: #cfff45 !important;
 }
 
-.pricing-btn {
-    background-color: #005aec;
-    border: none;
-    border-radius: 16px;
-    padding: 16px;
-    font-size: 16px;
-    font-weight: 700;
-    color: white;
-    width: 100%;
-    cursor: pointer;
+.main-btn-service {
+    background-color: #cfff45 !important;
+    border: none !important;
+    border-radius: 16px !important;
+    padding: 16px 32px !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    color: black !important;
+    cursor: pointer !important;
 }
+
 
 .certificates {
     text-align: center;

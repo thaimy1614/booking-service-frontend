@@ -3,72 +3,57 @@ import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./service-detail.css";
 import Loading from "../../common/loading";
+import { Button } from "@mui/material";
+import { useParams } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightDots } from "@fortawesome/free-solid-svg-icons";
 
-const MainContent = ({services}) => {
+const MainContent = ({ service }) => {
+  if (!service) {
+    return <p>Loading service details...</p>; // Or a loading spinner
+  }
   return (
     <main>
       <section className="main-section">
-        <h1>DỊCH VỤ CỦA CHÚNG TÔI</h1>
-        <p>
-        Dưới đây là các dịch vụ của chúng tôi, chúng tôi sẽ tư vấn thêm nếu bạn cần biết đầy đủ chính sách và thông tin.
-        </p>
-        <button className="main-btn">Tư vấn ngay</button>
+        <h1>{service.name}</h1>
+        <p>{service.description}</p>
       </section>
-      <section className="pricing-section">
-        <div className="pricing-cards">
-        {services && services.length > 0 ? (
-            services.map((category) => (
-              <PricingCard title={category.name} items={category.services} />
-            ))
-          ) : (
-            <p>No services available.</p>
-          )}
-        </div>
+      <section className="main-section">
+        <h1>Lợi Ích Của {service.name}</h1>
+
+        {service.benefits.map((benefit, index) => (
+          <p key={index}>- {benefit}</p>
+        ))}
+      </section>
+      <section className="main-section">
+        <Button className="main-btn-service">
+          Tư Vấn Ngay{" "}
+          <FontAwesomeIcon icon={faArrowUpRightDots} size="1x" color="white" />
+        </Button>
       </section>
     </main>
   );
 };
 
-const PricingCard = ({ title, items }) => {
-  return (
-    <div className="pricing-card">
-      <h3>{title}</h3>
-      <ul>
-        {items.map((item, index) => (
-          <li key={item.id}>{item.name}</li>
-        ))}
-      </ul>
-      <button className="pricing-btn">XEM CHI TIẾT</button>
-    </div>
-  );
-};
-
-export const Certificates = () => {
-  return (
-    <section className="certificates">
-      <h2>Chứng Chỉ</h2>
-      <div>
-        <img src="/assets/img/certificate.png" alt="Certificate" />
-      </div>
-    </section>
-  );
-};
-
 const ServiceDetail = () => {
-  const [service, setService] = useState([]);
+  const [service, setService] = useState(null);
   const [loading, setLoading] = useState(false);
+  const { id } = useParams();
 
-  const fetchServices = async () => {
+  const fetchCategoryById = async () => {
     setLoading(true);
     try {
-      const response = await fetch(process.env.REACT_APP_API + "/category", {
-        method: "GET",
-      });
+      const response = await fetch(
+        process.env.REACT_APP_API + `/service/${id}`,
+        {
+          method: "GET",
+        }
+      );
       const data = await response.json();
       setLoading(false);
       if (response.ok) {
         setService(data.result);
-        console.log(data.result)
+        console.log(data.result);
         return data.result;
       } else {
         console.error("Failed to fetch services");
@@ -76,19 +61,18 @@ const ServiceDetail = () => {
     } catch (error) {
       console.error("Error fetching services:", error);
       setLoading(false);
-
     }
   };
 
   useEffect(() => {
-    fetchServices();
+    fetchCategoryById();
   }, []);
 
   return (
     <div className="app">
       <Header />
       {loading && <Loading />}
-      <MainContent services={service} />
+      <MainContent service={service} />
       <Footer />
     </div>
   );
