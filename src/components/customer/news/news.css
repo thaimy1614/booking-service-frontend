@@ -2,29 +2,60 @@
   margin-bottom: 100px;
 }
 /* news.css */
-.main-section h1 {
-  color: #cfff45;
-}
 
+.main-section-news h1 {
+  font-size: 64px;
+  font-weight: 800;
+  line-height: 1.17;
+}
+.main-section-news {
+  text-align: left;
+  margin: 150px 0;
+  max-width: 1250px;
+  display: flex;
+  flex-direction: column;
+}
 .new-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* 3 columns for wider screens */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* 3 columns for wider screens */
   gap: 50px; /* Space between cards */
-  justify-items: center; /* Centers items horizontally */
+  justify-items: auto; /* Centers items horizontally */
 }
 
 .card {
-  width: 100%; /* Full width inside grid */
-  max-width: 300px; /* Optional: limits card width */
+  width: 100%;
+  max-width: 450px;
   background-color: #2d02db;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
   color: white;
+  justify-content: space-around;
+}
+
+.card-date {
+  display: flex;
+  justify-content: space-between; /* Ensures the date and type are spaced apart */
+  width: 100%; /* Takes up full width of the card */
+  align-items: center; /* Vertically center date and type */
+  margin-top: 10px;
+}
+
+.card-date .date, .card-date .type {
+  margin: 0; /* Remove default margins */
+}
+
+.date {
+  display: flex;
+  align-items: center;
+}
+
+.date .icon {
+  margin-right: 5px; /* Adds some space between the icon and the date text */
 }
 
 .card img {
@@ -38,8 +69,14 @@
   margin: 10px 0;
 }
 
+.card h2:hover{
+  cursor: pointer;
+}
+
+
+
 .card p {
-  font-size: 1rem;
+  font-size: 0.8rem;
   color: white;
   margin-bottom: 10px;
 }

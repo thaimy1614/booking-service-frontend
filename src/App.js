@@ -14,6 +14,7 @@ import Contact from "./components/customer/contact/contact";
 import CategoryDetail from "./components/customer/category-detail/category-detail";
 import ServiceDetail from "./components/customer/service-detail/service-detail";
 import Request from "./components/customer/request/request";
+import NewsDetail from "./components/customer/news-detail/news-detail";
 
 const App = () => {
   return (
@@ -34,6 +35,7 @@ const App = () => {
         <Route path="/category/:id" element={<CategoryDetail />} />
         <Route path="/service/:id" element={<ServiceDetail />} />
         <Route path="/send-request" element={<Request />} />
+        <Route path="/news/:id" element={<NewsDetail />} />
       </Routes>
     </div>
   );

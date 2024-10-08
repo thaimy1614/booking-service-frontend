@@ -3,6 +3,9 @@ import React from "react";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./news.css";
+import { NavLink } from "react-router-dom";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+
 
 const News = () => {
   return (
@@ -15,54 +18,82 @@ const News = () => {
 };
 
 // Corrected the function signature to use destructuring
-const Card = ({ img, title, description }) => {
+const Card = ({ id, date, type, img, title, description }) => {
   return (
     <div className="card">
       <img src={`/assets/img/` + img} alt={title} />
-      <h2>{title}</h2>
+      <NavLink to={`/news/${id}`}><h2>{title}</h2></NavLink>
+      <div className="card-date">
+        <p className="date">
+          <CalendarMonthIcon /> {date}
+        </p>
+        <p className="type">{type}</p>
+      </div>
       <p>{description}</p>
-      <a href="#">Xem thêm</a>
+      <NavLink to={`/news/${id}`}>Xem thêm</NavLink>
     </div>
   );
 };
 
+
 export const NewCards = () => {
   const cardData = [
     {
-      img: "new-1.png",
-      title: "August 6th every year becomes Vietnam Cyber Security Day",
-      description:
-        "On September 20, Prime Minister Pham Minh Chinh signed Decision No. 1013/QD-TTg, which designated August 6 every year as Vietnam Cyber ​​Security Day.",
+      id: 1,
+      title: "Chiếm quyền iCloud rồi lừa đảo",
+      date: "Aug 23, 2024",
+      type: "Hardware security",
+      url: "new-1.png",
+      content: `
+    Theo Công an tỉnh Tiền Giang, trước đó Phòng Cảnh sát hình sự tiếp nhận tin báo từ người dân về việc bị kẻ gian xâm nhập trái phép...
+    `,
     },
     {
-      img: "new-2.png",
+      id: 2,
+      title: "Hơn 11 triệu thiết bị Android có thể bị nhiễm mã độc Necro",
+      date: "12:00 | 03/10/2024",
+      type: "HACKER / MALWARE",
+      url: "new-2.png",
+      content: `
+    Với khả năng hoạt động ngầm và chiếm quyền kiểm soát hệ thống, mã độc Necro có thể thay đổi URL, cài đặt mã độc mới cho đến khi ...`,
+    },
+    {
+      id: 3,
       title:
-        "US government removes unnecessary degree requirements for cybersecurity workers",
-      description:
-        "The US government will eliminate unnecessary degree requirements to prioritize skills-based hiring to meet the demand for 500,000 jobs in the cybersecurity field.",
+        "Mozilla đối mặt với cáo buộc xâm phạm quyền riêng tư của người dùng Firefox",
+      date: "12:00 | 03/10/2024",
+      type: "HACKER / MALWARE",
+      url: "new-3.png",
+      content: `
+    Mozilla, công ty đứng sau trình duyệt web Firefox đang vướng vào một vụ tranh cãi về quyền riêng tư. Tổ chức phi lợi nhuận Noyb đã đệ...`,
     },
     {
-      img: "new-3.png",
-      title: "Warning of targeted cyberattack campaign targeting Vietnam",
-      description:
-        "The Department of Information Security recommends that agencies and organizations need to check and review information systems in use that may be affected by cyber attacks.",
+      id: 4,
+      title:
+        "6 tháng đầu năm Việt Nam ghi nhận 20 sự cố tấn công mạng đặc biệt nghiêm trọng",
+      date: "12:00 | 03/10/2024",
+      type: "HACKER / MALWARE",
+      url: "new-4.png",
+      content: `Nhằm hưởng ứng Ngày Chuyển đổi số quốc gia 1010, mới đây, Sở TT&TT TP. Cần Thơ phối hợp cùng Tạp chí điện tử... `,
     },
     {
-      img: "new-4.png",
-      title: "Many US businesses turn back to paper because of cyber attacks",
-      description:
-        "Many car dealers are having to deal with paperwork manually after the management system of supplier CDK was hacked.",
+      id: 5,
+      title:
+        "CISA cảnh báo lỗ hổng nghiêm trọng Ivanti vTM đang bị khai thác tích cực",
+      date: " 04/09/2024",
+      type: "HACKER / MALWARE",
+      url: "new-5.png",
+      content: `
+    Lỗ hổng định danh CVE-2024-7593 cho phép kẻ tấn công từ xa không cần xác thực có thể tạo tài khoản quản trị viên trái phép...`,
     },
     {
-      img: "new-5.png",
-      title: "Malware victims increase sharply in Vietnam",
-      description:
-        "The number of accounts exposed by malware increased 31 times in three years, while serious cyber attacks are also increasing in Vietnam.",
-    },
-    {
-      img: "new-6.png",
-      title: "Most passwords are cracked by AI in less than 60 seconds",
-      description: "Most passwords are cracked by AI in less than 60 seconds.",
+      id: 6,
+      title: "Cảnh giác trước các chiêu thức mới của lừa đảo mạo danh",
+      date: "Thứ Tư, 04/09/2024, 07:00",
+      type: "Hardware security",
+      url: "new-6.png",
+      content: `
+    Cục An toàn thông tin cho biết, thủ đoạn lừa đảo mới xuất hiện trong tuần qua là mạo danh lừa đảo tuyển dụng ngành hàng không...`,
     },
   ];
 
@@ -71,10 +102,13 @@ export const NewCards = () => {
       <div className="new-cards">
         {cardData.map((card, index) => (
           <Card
-            key={index} // Unique key for each card
-            img={card.img}
+            id={card.id}
+            key={index}
+            img={card.url}
             title={card.title}
-            description={card.description}
+            date={card.date}
+            description={card.content}
+            type={card.type}
           />
         ))}
       </div>
@@ -85,7 +119,7 @@ export const NewCards = () => {
 export const MainContent = () => {
   return (
     <main className="main-news">
-      <section className="main-section">
+      <section className="main-section-news">
         <h1>MỘT SỐ TIN TỨC XIN LƯU Ý HÔM NAY</h1>
       </section>
       <NewCards />
