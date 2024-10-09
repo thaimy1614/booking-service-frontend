@@ -41,7 +41,7 @@ const MessageModal = ({ message, open, handleClose, messageType }) => {
           textAlign: "center",
         }}
       >
-        {isSuccess ? "Success!" : "Error!"}
+        {isSuccess ? "Thành công!" : "Thất bại!"}
       </DialogTitle>
       <DialogContent>
         <DialogContentText
