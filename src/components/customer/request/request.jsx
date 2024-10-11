@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./request.css";
+import { SendRequest } from "../../common/request";
+import MessageModal from "../../common/message-modal";
 
 const SupportForm = () => {
   const [formData, setFormData] = useState({
@@ -14,6 +16,12 @@ const SupportForm = () => {
     details: "",
   });
 
+  const [messageModalOpen, setMessageModal] = useState(false);
+  const [messageType, setMessageType] = useState(false);
+  const [message, setMessage] = useState(
+    "Vui lòng kiểm tra email, sau đó nhập OTP"
+  );
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -24,8 +32,12 @@ const SupportForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log(formData);
+    SendRequest(formData.fullName, formData.email, setMessageModal, setMessageType, setMessage)
+    
+  };
+
+  const handleMessageModalClose = () => {
+    setMessageModal(false);
   };
 
   return (
@@ -120,6 +132,14 @@ const SupportForm = () => {
           <img src="/assets/img/instagram.png" alt="Instagram" />
         </a>
       </div>
+      {messageModalOpen && (
+        <MessageModal
+          message={message}
+          open={messageModalOpen}
+          handleClose={handleMessageModalClose}
+          messageType={messageType}
+        />
+      )}
     </div>
   );
 };
@@ -144,6 +164,7 @@ const Request = () => {
       <Header />
       <MainContent />
       <Footer />
+      
     </div>
   );
 };

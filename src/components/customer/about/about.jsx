@@ -67,23 +67,23 @@ const About = () => {
         <div className="image-grid" >
           <ImageWithText
             imageUrl="/assets/img/about2.png"
-            hoverText="Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            hoverText="Information Security"
             className="about-img-2"
             
           />
           <ImageWithText
             imageUrl="/assets/img/about3.png"
-            hoverText="Vivamus lacinia odio vitae vestibulum vestibulum."
+            hoverText="Cloud Computer"
             className="about-img-3"
           />
           <ImageWithText
             imageUrl="/assets/img/about4.png"
-            hoverText="Cras vehicula, mi quis vehicula ornare, eros dolor interdum nulla."
+            hoverText="IT Infrastructure"
             className="about-img-4"
           />
           <ImageWithText
             imageUrl="/assets/img/about5.png"
-            hoverText="Donec bibendum lorem sed consequat auctor."
+            hoverText="Technical Service"
             className="about-img-5"
           />
         </div>

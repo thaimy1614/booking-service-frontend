@@ -94,7 +94,7 @@ function ChangePassword() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               type="password"
-              placeholder="Old Password"
+              placeholder="Mật khẩu cũ"
             />
           </div>
           <div className="input-container">
@@ -103,7 +103,7 @@ function ChangePassword() {
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               type="password"
-              placeholder="New Password"
+              placeholder="Mật khẩu mới"
             />
           </div>
           <div className="input-container">
@@ -112,7 +112,7 @@ function ChangePassword() {
               value={reEnter}
               onChange={(e) => setReEnter(e.target.value)}
               type="password"
-              placeholder="Re-enter New Password"
+              placeholder="Nhập lại mật khẩu mới"
             />
           </div>
           <button type="submit" className="login-btn-2">

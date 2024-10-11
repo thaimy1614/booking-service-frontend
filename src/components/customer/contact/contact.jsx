@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Header } from "../../common/header/header";
 import { Footer } from "../../common/footer/footer";
 import "./contact.css";
+import MessageModal from "../../common/message-modal";
+import { SendRequest } from "../../common/request";
 
 const SupportForm = () => {
     const [formData, setFormData] = useState({
@@ -13,6 +15,12 @@ const SupportForm = () => {
       subject: '',
       details: ''
     });
+
+    const [messageModalOpen, setMessageModal] = useState(false);
+  const [messageType, setMessageType] = useState(false);
+  const [message, setMessage] = useState(
+    "Vui lòng kiểm tra email, sau đó nhập OTP"
+  );
   
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -24,9 +32,14 @@ const SupportForm = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      // Handle form submission here
-      console.log(formData);
+      SendRequest(formData.fullName, formData.email, setMessageModal, setMessageType, setMessage)
+      
     };
+
+    const handleMessageModalClose = () => {
+      setMessageModal(false);
+    };
+  
   
     return (
       <div className="form-container">
@@ -62,6 +75,14 @@ const SupportForm = () => {
           </label>
           <button type="submit">Gửi Yêu Cầu</button>
         </form>
+        {messageModalOpen && (
+        <MessageModal
+          message={message}
+          open={messageModalOpen}
+          handleClose={handleMessageModalClose}
+          messageType={messageType}
+        />
+      )}
       </div>
     );
   };
