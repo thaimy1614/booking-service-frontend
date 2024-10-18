@@ -100,6 +100,10 @@ const Service = () => {
     navigate("/category/"+id)
   };
 
+  if (loading) {
+    return <div>Loading...</div>; // Or a spinner component
+  }
+
   return (
     <div className="app">
       <Header />
