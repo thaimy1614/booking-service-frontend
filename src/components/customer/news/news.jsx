@@ -20,10 +20,10 @@ const News = () => {
 // Corrected the function signature to use destructuring
 const Card = ({ id, date, type, img, title, description }) => {
   return (
-    <div className="card">
+    <div className="new-card">
       <img src={`/assets/img/` + img} alt={title} />
       <NavLink to={`/news/${id}`}><h2>{title}</h2></NavLink>
-      <div className="card-date">
+      <div className="new-card-date">
         <p className="date">
           <CalendarMonthIcon /> {date}
         </p>

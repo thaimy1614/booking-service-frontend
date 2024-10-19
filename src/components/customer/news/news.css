@@ -22,7 +22,7 @@
   justify-items: auto; /* Centers items horizontally */
 }
 
-.card {
+.new-card {
   width: 100%;
   max-width: 450px;
   background-color: #2d02db;
@@ -37,7 +37,7 @@
   justify-content: space-around;
 }
 
-.card-date {
+.new-card-date {
   display: flex;
   justify-content: space-between; /* Ensures the date and type are spaced apart */
   width: 100%; /* Takes up full width of the card */
@@ -45,7 +45,7 @@
   margin-top: 10px;
 }
 
-.card-date .date, .card-date .type {
+.new-card-date .date, .new-card-date .type {
   margin: 0; /* Remove default margins */
 }
 
@@ -58,30 +58,30 @@
   margin-right: 5px; /* Adds some space between the icon and the date text */
 }
 
-.card img {
+.new-card img {
   width: 100%;
   height: auto;
   border-radius: 10px;
 }
 
-.card h2 {
+.new-card h2 {
   font-size: 1.2rem;
   margin: 10px 0;
 }
 
-.card h2:hover{
+.new-card h2:hover{
   cursor: pointer;
 }
 
 
 
-.card p {
+.new-card p {
   font-size: 0.8rem;
   color: white;
   margin-bottom: 10px;
 }
 
-.card a {
+.new-card a {
   text-decoration: none;
   color: white;
   font-weight: bold;
