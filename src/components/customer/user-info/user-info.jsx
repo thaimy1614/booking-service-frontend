@@ -132,6 +132,7 @@ function UserInfo() {
               onChange={(e) => setPhone(e.target.value)}
               type="text"
               placeholder="Số điện thoại"
+              disabled
             />
           </div>
 
