@@ -31,21 +31,21 @@ const MainHistoryContent = ({ orders, onClick }) => {
   );
 };
 
-function formatCurrency(number) {
+export function formatCurrency(number) {
   return new Intl.NumberFormat('de-DE').format(number);
 }
 
 const HistoryCard = ({ id, title, status, price, onClick, imageNumber }) => {
   return (
-      <div className="card">
-        <div className="image-section">
+      <div className="card-history">
+        <div className="image-section-history">
           <img 
             src={`/assets/img/order-${imageNumber}.png`}
             alt="Cloud" 
-            className="cloud-image"
+            className="cloud-image-history"
           />
         </div>
-        <div className="text-section">
+        <div className="text-section-history">
           <h2>Đơn Hàng {title}</h2>
           <p>1 sản phẩm</p>
           <p>Trạng thái: {status==="DONE"?"Đã hoàn thành":(status==="PENDING"?"Đang thực hiện":"Đã hủy")}</p>

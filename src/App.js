@@ -16,6 +16,7 @@ import ServiceDetail from "./components/customer/service-detail/service-detail";
 import Request from "./components/customer/request/request";
 import NewsDetail from "./components/customer/news-detail/news-detail";
 import History from "./components/customer/history/history";
+import Process from "./components/customer/process/process";
 
 const App = () => {
   return (
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/send-request" element={<Request />} />
         <Route path="/news/:id" element={<NewsDetail />} />
         <Route path="/history" element={<History />} />
+        <Route path="/history/:id" element={<Process />} />
       </Routes>
     </div>
   );

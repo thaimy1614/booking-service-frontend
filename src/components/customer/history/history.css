@@ -23,7 +23,7 @@
 }
 
 /* Ensure the card is centered on the screen */
-.card-container {
+.card-container-history {
     display: flex;
     height: 100vh;
     flex-direction: column;
@@ -31,7 +31,7 @@
   }
   
   /* Card styling */
-  .card {
+  .card-history {
     display: flex;
     width: 70vw;
     max-width: 1000px;
@@ -40,20 +40,20 @@
     flex-direction: row;
   }
 
-.image-section {
+.image-section-history {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
   }
   
-  .cloud-image {
+  .cloud-image-history {
     max-width: 100%;
     border-radius: 10px;
   }
   
   /* Text section styles */
-  .text-section {
+  .text-section-history {
     display: flex;
     flex: 1;
     padding-left: 20px;
@@ -62,13 +62,13 @@
     height: 100%;
   }
   
-  .text-section h2 {
+  .text-section-history h2 {
     margin-bottom: 10px;
     font-size: 1.5rem;
     color: white;
   }
   
-  .text-section p {
+  .text-section-history p {
     margin-bottom: 10px;
     color: white;
     font-size: 1rem;
